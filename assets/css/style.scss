@@ -2550,3 +2550,311 @@ html[data-scroll-orientation="horizontal"] {
     background-image: url(../img/automotive-banner.jpg);
   }
 }
+
+/* ================================================
+========== Contact Us Form Area Styles ============
+================================================ */
+.contact-sec {
+  margin: 115px 0;
+}
+.contact-container {
+  .contact-title {
+    margin-bottom: 50px;
+    p {
+      line-height: 1.35;
+    }
+  }
+}
+.contact-form {
+  .single-form-item {
+    margin-bottom: 12px;
+    .form-lable {
+      font-size: $font-size-sm + 1px;
+      font-weight: 300;
+      margin-bottom: 9px;
+    }
+    .form-control {
+      border-color: #b0bfb9;
+      padding: 0.594rem 0.9rem;
+      line-height: 1;
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(120, 142, 114, 0.45);
+        border-color: #b0bfb9;
+      }
+    }
+    .form-check-input {
+      border-color: #b0bfb9;
+      &:focus {
+        box-shadow: none;
+      }
+      &:checked {
+        background-color: $secondary-color;
+      }
+    }
+    .form-check-label {
+      font-size: $font-size-sm + 1px;
+      line-height: 1.75;
+      a {
+        font-weight: 700;
+        transition: $transition;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+  .sec-cta {
+    border: none;
+    background-color: transparent;
+    color: $black-color;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+}
+@include mediaQuery(min, 760px) {
+  .contact-container {
+    @include flex(flex-start, space-between);
+    .contact-title {
+      margin-bottom: 0;
+      width: 50%;
+    }
+  }
+  .contact-form {
+    width: 56%;
+    margin-top: 26px;
+    .single-form-item {
+      margin-bottom: 16px;
+      .form-lable {
+        font-size: $font-size-md;
+      }
+      .form-check-label {
+        font-size: $font-size-md;
+        line-height: 1.6;
+      }
+    }
+    .sec-cta {
+      font-size: $font-size-lg;
+    }
+  }
+}
+@include mediaQuery(min, 992px) {
+  .contact-sec {
+    margin: 130px 0 90px;
+  }
+  .contact-form {
+    width: 48%;
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .contact-sec {
+    margin: 160px 0 90px;
+  }
+  .contact-container {
+    .contact-title {
+      p {
+        font-size: $font-size-lg;
+      }
+    }
+  }
+  .contact-form {
+    width: 44%;
+    .single-form-item {
+      margin-bottom: 18px;
+      .form-lable {
+        font-size: $font-size-lg;
+      }
+      .form-check-label {
+        font-size: $font-size-lg;
+        line-height: 1.3;
+      }
+    }
+    .sec-cta {
+      font-size: $font-size-xl;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .contact-sec {
+    margin: 180px 0 90px;
+  }
+  .contact-container {
+    column-gap: 4%;
+  }
+  .contact-form {
+    width: 50%;
+    .single-form-item {
+      margin-bottom: 20px;
+    }
+  }
+}
+@include mediaQuery(min, 1600px) {
+  .contact-container {
+    column-gap: 10%;
+  }
+  .contact-form {
+    width: 42%;
+    .single-form-item {
+      margin-bottom: 22px;
+    }
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .contact-sec {
+    margin: 195px 0 90px;
+  }
+  .contact-form {
+    .single-form-item {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+/* ================================================
+======== Contact Us Location Area Styles ==========
+================================================ */
+.loc-sec {
+  padding: 70px 0;
+  background-color: #f0f7f3;
+}
+.loc-title {
+  margin-bottom: 50px;
+}
+.loc-list {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  li {
+    &:not(:last-of-type) {
+      margin-bottom: $spacing-xs;
+    }
+    img {
+      width: 23px;
+      margin-right: 10px;
+    }
+    h4 {
+      font-family: $secondary-font-family;
+      font-size: $font-size-lg;
+      font-weight: 600;
+      color: $secondary-color;
+    }
+    a {
+      font-family: $secondary-font-family;
+      font-size: $font-size-sm;
+      color: $black-color;
+      line-height: $line-height;
+    }
+  }
+  .number-details {
+    margin-top: 10px;
+    li {
+      img {
+        width: 16px;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+@media all and (max-width: 371px) {
+  .loc-list {
+    li {
+      a {
+        font-size: $font-size-sm - 0.5;
+      }
+    }
+  }
+}
+@include mediaQuery(min, 760px) {
+  .loc-title {
+    margin-bottom: 0;
+  }
+  .loc-details {
+    @include flex(flex-start, space-between);
+    .locations {
+      margin-top: $spacing-sm;
+      width: 50%;
+    }
+  }
+  .loc-list {
+    li {
+      h4 {
+        font-size: $font-size-xl;
+        margin-bottom: 10px;
+      }
+      a {
+        font-size: $font-size-md;
+      }
+    }
+    .number-details {
+      column-gap: 12px;
+    }
+  }
+}
+@include mediaQuery(min, 992px) {
+  .loc-sec {
+    padding: 100px 0;
+  }
+  .loc-details {
+    .locations {
+      width: 48%;
+    }
+  }
+  .loc-list {
+    .number-details {
+      display: flex;
+      column-gap: 10px;
+      li {
+        display: flex;
+        justify-content: flex-start;
+        &:not(:last-of-type) {
+          margin-bottom: 0;
+        }
+        img {
+          width: 19px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .loc-details {
+    .locations {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      width: 75%;
+    }
+  }
+  .loc-list {
+    li {
+      h4 {
+        font-size: $font-size-xxl;
+        margin-bottom: 14px;
+      }
+    }
+    .number-details {
+      column-gap: 16px;
+      margin-top: 15px;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .loc-details {
+    .locations {
+      width: 100%;
+      column-gap: 80px;
+    }
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .loc-sec {
+    padding: 130px 0;
+  }
+  .loc-list {
+    li {
+      h4 {
+        font-size: $font-size-xxl + 2px;
+      }
+    }
+  }
+}
