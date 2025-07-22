@@ -127,4 +127,42 @@
     },
   });
   // About Timeline Slider Area JS Ends
+
+  // Single Product Slider Area JS Starts
+  function updateSlideWidths() {
+    const container = document.querySelector(".container");
+    if (!container) return;
+    const viewportWidth = window.innerWidth;
+    const padding = viewportWidth < 767 ? 100 : 40;
+    const containerWidth = container.offsetWidth - padding; // fallback if .container not found
+    const slides = document.querySelectorAll(".pd-slider .swiper-slide");
+    slides.forEach((slide) => {
+      slide.style.width = containerWidth * 1 + "px"; // default preview size for all
+    });
+    const activeSlide = document.querySelector(".pd-slider .swiper-slide-active");
+    if (activeSlide) {
+      activeSlide.style.width = containerWidth + "px"; // full container width for active
+    }
+  }
+  var swiper = new Swiper(".pd-slider", {
+    slidesPerView: "auto",
+    centeredSlides: true,
+    grabCursor: true,
+    loop: true,
+    spaceBetween: 0,
+    autoplay: {
+      delay: 2800,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    on: {
+      init: updateSlideWidths,
+      slideChangeTransitionEnd: updateSlideWidths,
+      resize: updateSlideWidths,
+    },
+  });
+  // Single Product Slider Area JS Ends
 })(jQuery);
