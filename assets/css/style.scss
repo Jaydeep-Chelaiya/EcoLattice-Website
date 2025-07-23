@@ -167,26 +167,27 @@ html[data-scroll-orientation="horizontal"] {
 .navbar-nav {
   font-family: $secondary-font-family;
   .nav-link {
-    color: #4f6454;
+    color: $secondary-color;
+    padding: 15px 25px;
+    border-radius: 30px;
+    background-color: transparent;
+    color: $secondary-color;
+    // max-width: max-content;
     &.active {
       font-weight: 700;
-      color: #4f6454;
-      -webkit-text-stroke: 0.4px #788e72;
-      &::before {
-        opacity: 1;
-        display: inline-block;
+      color: $secondary-color;
+      background-color: #d8e2da;
+      &:hover {
+        color: $secondary-color;
       }
     }
     &:hover {
       color: $black-color;
-      &.active {
-        color: #4f6454;
-      }
     }
   }
 }
 .nav-item {
-  padding: 10px 0;
+  margin: 3px 0;
 }
 .navbar-toggler {
   padding: 0;
@@ -200,23 +201,21 @@ html[data-scroll-orientation="horizontal"] {
 }
 .dropdown-toggle-icon {
   position: absolute;
-  top: 3px;
-  right: 8px;
-  height: 42px;
-  width: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  top: 0;
+  right: 7px;
   z-index: 99;
+  height: 100%;
+  width: 40px;
   &::after {
     content: "";
-    display: inline-block;
-    height: 14px;
-    width: 14px;
-    border: 0;
-    border-right: 2px solid $secondary-color;
-    border-top: 2px solid $secondary-color;
     transform: rotate(135deg);
+    background: url(../img/accordian-arrow.svg);
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background-size: 100%;
+    position: absolute;
+    top: 5px;
   }
 }
 .navbar-collapse {
@@ -225,7 +224,6 @@ html[data-scroll-orientation="horizontal"] {
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   padding: 10px;
   border-radius: 12px;
-  margin-top: 20px;
 }
 .dropdown-item {
   padding: 11px 15px 10px 15px;
@@ -254,22 +252,28 @@ html[data-scroll-orientation="horizontal"] {
   .navbar {
     padding: 0 15px;
     border-radius: 56px;
+    .container-fluid {
+      padding-right: 0;
+    }
   }
   .logo {
     width: 200px;
   }
   .navbar-nav {
-    column-gap: 20px;
     .nav-link {
-      font-size: 18px;
+      font-size: 16px;
       &::before {
         background-position: center;
         height: 10px;
       }
     }
   }
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 15px 22px;
+  }
   .nav-item {
-    padding: 20px 0;
+    padding: 14px 0;
+    margin: 0;
   }
   .nav-item.dropdown:hover .dropdown-menu {
     display: block;
@@ -297,7 +301,25 @@ html[data-scroll-orientation="horizontal"] {
     margin: 30px 30px 0;
   }
   .navbar-nav {
-    column-gap: 35px;
+    .nav-link {
+      font-size: $font-size-lg - 1;
+    }
+  }
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 15px 35px;
+  }
+  .nav-item {
+    padding: 13.6px 0;
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .navbar-nav {
+    .nav-link {
+      font-size: $font-size-lg;
+    }
+  }
+  .nav-item {
+    padding: 13px 0;
   }
 }
 @include mediaQuery(min, 1700px) {
@@ -308,13 +330,12 @@ html[data-scroll-orientation="horizontal"] {
     width: 220px;
   }
   .navbar-nav {
-    column-gap: 55px;
     .nav-link {
       font-size: $font-size-xl;
     }
   }
   .nav-item {
-    padding: 25px 0;
+    padding: 18px 0;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     top: 92px;
@@ -798,7 +819,7 @@ html[data-scroll-orientation="horizontal"] {
   .hm-about-banner-area {
     margin-top: $spacing-lg;
     border-radius: $border-radius-lg;
-    padding: $section-space-md $section-space-xl;
+    padding: $section-space-xl $section-space-xl;
   }
   .sec-cta {
     .cta-arrow {
@@ -860,6 +881,13 @@ html[data-scroll-orientation="horizontal"] {
   .button-arrow {
     width: 64px;
     height: 64px;
+  }
+  .hm-about-banner-area {
+    padding: $section-space-xxl - 10 $section-space-xl;
+  }
+  .hm-about-banner-img {
+    position: relative;
+    top: 50px;
   }
 }
 
@@ -1811,14 +1839,14 @@ html[data-scroll-orientation="horizontal"] {
   row-gap: 25px;
   .connect-item {
     .sec-cta {
-      font-size: 15.9px;
+      font-size: $font-size-xl;
       font-weight: 700;
       color: $black-color;
     }
     p {
-      font-size: $font-size-sm;
+      font-size: $font-size-md;
       line-height: $line-height;
-      margin-top: 10px;
+      margin-top: 7px;
     }
   }
 }
@@ -1834,9 +1862,9 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 760px) {
   .connect-items {
-    gap: 30px 21px;
+    gap: 30px 10px;
     .connect-item {
-      width: calc((100% / 3) - 14px);
+      width: calc((100% / 3) - 7px);
       .sec-cta {
         font-size: $font-size-lg;
       }
@@ -1846,6 +1874,16 @@ html[data-scroll-orientation="horizontal"] {
         br {
           display: none;
         }
+      }
+    }
+  }
+}
+@include mediaQuery(760px, 991px) {
+  .connect-items {
+    .connect-item {
+      .sec-cta .cta-arrow {
+        min-width: 36px;
+        min-height: 36px;
       }
     }
   }
@@ -2855,6 +2893,576 @@ html[data-scroll-orientation="horizontal"] {
       h4 {
         font-size: $font-size-xxl + 2px;
       }
+    }
+  }
+}
+
+/* ==========================================
+======= Material Banner Area Styles =========
+========================================== */
+.material-banner {
+  color: $white-color;
+  background-image: url(../img/material-banner-mb.jpg);
+  .cta-arrow {
+    img {
+      filter: brightness(1.25);
+    }
+  }
+  .breadcrumb {
+    --bs-breadcrumb-divider-color: #fff;
+    --bs-breadcrumb-item-active-color: #fff;
+    a {
+      color: $white-color;
+    }
+  }
+  .banner-title {
+    max-width: 76%;
+  }
+  .banner-title-area .sec-cta {
+    color: $white-color;
+  }
+}
+@include mediaQuery(min, 992px) {
+  .material-banner {
+    background-image: url(../img/material-banner.jpg);
+    background-size: 200%;
+    background-position: 0 center;
+    .banner-content {
+      max-width: 100%;
+    }
+    .banner-title {
+      max-width: 68%;
+    }
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .material-banner {
+    background-size: cover;
+    background-position: -140px bottom;
+    padding: 50px 60px;
+    .banner-content {
+      max-width: 52%;
+    }
+    .banner-title {
+      max-width: 84%;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .material-banner {
+    background-position: -20px bottom;
+    background-size: 105%;
+    .banner-content {
+      max-width: 58%;
+    }
+    .banner-title {
+      max-width: 70%;
+    }
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .material-banner {
+    background-position: 0 bottom;
+    background-size: 102%;
+    .banner-content {
+      max-width: 55%;
+    }
+  }
+}
+
+/* ==========================================
+======= Material About Area Styles ==========
+========================================== */
+.materials-item-container {
+  margin-top: $spacing-lg;
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  row-gap: 24px;
+}
+.single-material-feature {
+  background-color: #abc7aa;
+  border-radius: $border-radius;
+  padding: $spacing-md + 5 $spacing-lg - 5;
+  width: 100%;
+}
+.material-icon {
+  text-align: left;
+  height: 60px;
+  margin-bottom: $spacing-sm;
+  img {
+    width: auto;
+  }
+}
+.material-content {
+  h6 {
+    font-family: $secondary-font-family;
+    color: #4f6454;
+    font-weight: 700;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-xs - 5;
+  }
+  p {
+    line-height: $line-height;
+    font-size: $font-size-md;
+    margin-bottom: 0;
+  }
+}
+@include mediaQuery(min, 760px) {
+  .material-abt-sec {
+    .p-video-container {
+      margin-top: $spacing-md;
+    }
+    .button-arrow-container > {
+      svg:last-of-type {
+        bottom: 6px;
+      }
+    }
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .materials-item-container {
+    flex-direction: row;
+    column-gap: 10px;
+  }
+  .single-material-feature {
+    border-radius: $border-radius-lg;
+    padding: 25px 20px 25px 20px;
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .materials-item-container {
+    column-gap: 20px;
+  }
+  .single-material-feature {
+    padding: 30px;
+  }
+  .material-content {
+    h6 {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-xs - 2;
+    }
+    p {
+      font-size: $font-size-lg - 0.7;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .single-material-feature {
+    padding: 32px 40px;
+  }
+  .material-icon {
+    margin-bottom: $spacing-md;
+  }
+  .material-content {
+    h6 {
+      font-size: $font-size-xxl;
+      margin-bottom: $spacing-xs;
+    }
+    p {
+      font-size: $font-size-xl - 0.5;
+    }
+  }
+}
+
+/* ==========================================
+====== Material Accordion Area Styles =======
+========================================== */
+.accordion {
+  .accordion-item {
+    border-radius: $border-radius;
+    position: relative;
+    z-index: 1;
+    .accordion-header {
+      font-family: $secondary-font-family;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      cursor: pointer;
+      line-height: 1;
+      font-size: $font-size-xxl;
+      font-weight: 700;
+      transition: $transition;
+      &::after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background-image: url(../img/accordian-arrow.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: transform 0.3s ease;
+        transform: rotate(0deg);
+      }
+      &.active::after {
+        transform: rotate(90deg);
+      }
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: $transition;
+      padding: 0 20px;
+    }
+    &:nth-of-type(2) {
+      .accordion-header {
+        &::after {
+          filter: brightness(1.25);
+        }
+      }
+    }
+    &:not(:first-of-type) {
+      margin-top: -30px;
+    }
+    &:not(:last-of-type) {
+      min-height: 88px;
+      .accordion-img {
+        padding-bottom: 50px;
+      }
+    }
+    &:last-of-type {
+      .accordion-img {
+        padding-bottom: 25px;
+      }
+    }
+  }
+}
+.accordion-img {
+  margin-top: $spacing-md;
+  img {
+    border-radius: $border-radius;
+  }
+}
+@include mediaQuery(min, 760px) {
+  .accordion {
+    .accordion-item {
+      .accordion-header {
+        padding: 20px 35px;
+        font-size: $title-md;
+        &::after {
+          height: 44px;
+          width: 44px;
+        }
+      }
+      &:not(:last-of-type) {
+        min-height: 112px;
+      }
+      .accordion-content {
+        padding-left: 35px;
+        padding-right: 35px;
+      }
+    }
+  }
+}
+@include mediaQuery(min, 992px) {
+  .accordion {
+    .accordion-item {
+      .accordion-content {
+        @include flex(flex-start, space-between);
+      }
+    }
+  }
+  .accordion-main-content {
+    width: 84%;
+    margin-right: 6%;
+  }
+  .accordion-img {
+    margin-top: 0;
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .accordion {
+    .accordion-item {
+      &:not(:first-of-type) {
+        margin-top: -48px;
+      }
+      &:not(:last-of-type) {
+        min-height: 130px;
+        .accordion-img {
+          padding-bottom: 90px;
+        }
+      }
+      &:last-of-type {
+        .accordion-img {
+          padding-bottom: $spacing-xxl;
+        }
+      }
+    }
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .accordion {
+    .accordion-item {
+      border-radius: $border-radius-lg;
+      .accordion-header {
+        padding: 28px 50px;
+        font-size: $title-xxl;
+        &::after {
+          height: 60px;
+          width: 60px;
+        }
+      }
+      &:not(:first-of-type) {
+        margin-top: -48px;
+      }
+      &:not(:last-of-type) {
+        min-height: 160px;
+        .accordion-img {
+          padding-bottom: 90px;
+        }
+      }
+      .accordion-content {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+    }
+  }
+  .accordion-main-content {
+    width: 38%;
+  }
+}
+
+/* ==========================================
+======== Process Banner Area Styles =========
+========================================== */
+.process-banner {
+  background-image: url(../img/process-banner-mb.jpg);
+  background-position: top center;
+}
+.process-main-wrapper {
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  row-gap: 40px;
+}
+.process-single-item {
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  row-gap: 12px;
+  max-width: 100%;
+}
+.process-box-img {
+  width: 100%;
+  position: relative;
+  height: 260px;
+  .process-box-single-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    border-radius: $border-radius;
+    z-index: 0;
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+.process-content-wrapper {
+  background-color: #bdcfbc;
+  position: relative;
+  border-radius: $border-radius;
+  width: 100%;
+}
+.process-content {
+  padding: $spacing-md + 2;
+  padding-bottom: 28px;
+  span {
+    display: block;
+    font-family: $secondary-font-family;
+    line-height: $line-height - 0.2;
+    font-size: $font-size-xxl;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: $font-size-sm;
+    line-height: $line-height - 0.2;
+  }
+}
+.process-pagination {
+  position: absolute;
+  text-align: left;
+  left: 22px !important;
+  bottom: 22px !important;
+  @include flex(center, flex-start);
+  .swiper-pagination-bullet {
+    width: 25px;
+    border-radius: 22px;
+    height: 5px;
+    background-color: #9fb7aa;
+    opacity: 1;
+    &.swiper-pagination-bullet-active {
+      background-color: #4f6454;
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+@include mediaQuery(min, 760px) {
+  .process-banner {
+    background-position: center center;
+  }
+  .process-box-img {
+    height: 420px;
+  }
+  .process-content {
+    padding: 35px;
+    padding-bottom: 40px;
+    span {
+      font-size: $title-md;
+      br {
+        display: none;
+      }
+    }
+    p {
+      font-size: $font-size-md + 1;
+      line-height: $line-height;
+    }
+  }
+  .process-pagination {
+    bottom: 30px !important;
+    left: 38px !important;
+  }
+}
+@include mediaQuery(min, 992px) {
+  .process-banner {
+    background-position: center center;
+    background-image: url(../img/process-banner.jpg);
+  }
+  .process-box-img {
+    height: 460px;
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .process-main-wrapper {
+    row-gap: 20px;
+  }
+  .process-single-item {
+    flex-direction: row;
+    column-gap: 20px;
+    height: 100%;
+  }
+  .process-box-img {
+    .process-box-single-img {
+      border-radius: $border-radius-lg;
+    }
+  }
+  .process-content-wrapper {
+    border-radius: $border-radius-lg;
+    max-width: 34%;
+    align-self: stretch;
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .process-box-img {
+    height: 520px;
+  }
+  .process-content {
+    padding: 45px;
+    span {
+      font-size: $title-lg;
+      margin-bottom: $spacing-sm;
+      br {
+        display: block;
+      }
+    }
+    p {
+      max-width: 90%;
+      font-size: $font-size-lg;
+    }
+  }
+  .process-pagination {
+    bottom: 45px !important;
+    left: 48px !important;
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .process-box-img {
+    height: 620px;
+  }
+  .process-content {
+    padding: 50px;
+    span {
+      font-size: $title-xl;
+    }
+    p {
+      max-width: 90%;
+      font-size: $font-size-xl;
+    }
+  }
+  .process-pagination {
+    bottom: 50px !important;
+    left: 52px !important;
+  }
+}
+
+/* ==========================================
+=== Process Products Listing Area Styles ====
+========================================== */
+.nav-tabs {
+  justify-content: space-between;
+  border: none;
+  font-family: $secondary-font-family;
+  margin-bottom: $spacing-md;
+  .nav-link {
+    background-color: #d1e6d9;
+    color: #9fb7aa;
+    border-radius: 30px;
+    &.active {
+      color: #4f6454;
+      font-weight: 700;
+      background: #9db7a9;
+    }
+  }
+}
+@include mediaQuery(min, 760px) {
+  .nav-tabs {
+    justify-content: center;
+    margin-bottom: $spacing-lg;
+    column-gap: 16px;
+    .nav-link {
+      font-size: $font-size-lg;
+      padding: 12px 25px;
+    }
+  }
+}
+@include mediaQuery(min, 992px) {
+  .process-product-sec {
+    .g-top-area {
+      margin-bottom: $spacing-lg;
+    }
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .nav-tabs {
+    column-gap: 20px;
+    .nav-link {
+      font-size: $font-size-xl;
+      padding: 13px 30px;
+      min-width: 182px;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .process-product-sec {
+    .g-top-area {
+      margin-bottom: $spacing-xl;
+    }
+  }
+  .nav-tabs {
+    margin-bottom: $spacing-xl;
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .nav-tabs {
+    .nav-link {
+      font-size: $font-size-xxl;
+      padding: 15px 45px;
+      min-width: 224px;
     }
   }
 }
