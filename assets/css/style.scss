@@ -54,6 +54,7 @@ body {
   font-weight: 400;
   color: $black-color;
   line-height: 1.25;
+  overflow-x: hidden;
 }
 img {
   max-width: 100%;
@@ -1509,8 +1510,8 @@ html[data-scroll-orientation="horizontal"] {
     margin-top: 170px;
   }
   .banner-container {
-    padding: 140px 70px 120px 70px;
-    min-height: 680px;
+    padding: 170px 70px 120px 70px;
+    min-height: 730px;
   }
   .banner-content {
     max-width: 32%;
