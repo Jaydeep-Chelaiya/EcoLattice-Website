@@ -17,50 +17,44 @@
   });
   // Lenis Smooth Scroll JS Ends
 
+  // Header Reveal On Scroll Starts
+  var headerscroll = document.getElementById("header");
+  var headroom = new Headroom(headerscroll, {
+    offset: 100,
+    tolerance: 3,
+    classes: {
+      initial: "animated",
+      pinned: "swingInX",
+      unpinned: "swingOutX",
+    },
+  });
+  headroom.init();
+  // Header Reveal On Scroll Ends
+
   // Menu Dropdown JS Starts
   document.addEventListener("DOMContentLoaded", function () {
-    // const productLink = document.getElementById("productLink");
     const dropdownToggleIcon = document.getElementById("dropdownIcon");
     const dropdownMenu = document.querySelector(".dropdown-menu");
-    // For screens larger than 992px
-    // if (window.innerWidth >= 992) {
-    //   productLink.addEventListener("click", function (e) {
-    //     e.preventDefault();
-    //     window.location.href = this.href;
-    //   });
-    // }
-    // For screens smaller than 992px
     if (window.innerWidth < 992) {
-      // productLink.addEventListener("click", function (e) {
-      //   // Navigate to the link
-      //   window.location.href = this.href;
-      // });
       dropdownToggleIcon.addEventListener("click", function (e) {
         e.preventDefault();
-        // Toggle the dropdown menu's visibility
         dropdownMenu.classList.toggle("show");
         this.setAttribute("aria-expanded", dropdownMenu.classList.contains("show"));
       });
-      // Close dropdown if clicking outside
-      // document.addEventListener("click", function (e) {
-      //   if (!dropdownToggleIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      //     dropdownMenu.classList.remove("show");
-      //     dropdownToggleIcon.setAttribute("aria-expanded", "false");
-      //   }
-      // });
     }
   });
   // Menu Dropdown JS Ends
 
   // Benefit Slider Area JS Starts
   var swiper = new Swiper(".hmBenefitSlider", {
-    spaceBetween: 10,
-    slidesPerView: 1.6,
-    centeredSlides: true,
+    spaceBetween: 0,
+    slidesPerView: 1.3,
+    slidesToScroll: 1,
     grabCursor: true,
     loop: true,
+    watchSlidesProgress: true,
     autoplay: {
-      delay: 2800,
+      delay: 3000,
       disableOnInteraction: false,
     },
     pagination: {
@@ -69,29 +63,23 @@
     },
     breakpoints: {
       760: {
-        slidesPerView: 2.2,
-        spaceBetween: -60,
-        centeredSlides: false,
+        slidesPerView: 1.4,
       },
       992: {
-        slidesPerView: 2.8,
-        spaceBetween: -80,
-        centeredSlides: false,
+        slidesPerView: 2.2,
       },
       1200: {
-        slidesPerView: 2.8,
-        spaceBetween: -120,
-        centeredSlides: false,
-      },
-      1400: {
-        slidesPerView: 2.8,
-        spaceBetween: -120,
-        centeredSlides: false,
+        slidesPerView: 2.4,
       },
       1700: {
-        slidesPerView: 3.0,
-        spaceBetween: -120,
-        centeredSlides: false,
+        slidesPerView: 2.95,
+      },
+    },
+    on: {
+      setTranslate(swiper, translate) {
+        // force update based on current position
+        swiper.updateActiveIndex();
+        swiper.updateSlidesClasses();
       },
     },
   });
@@ -133,7 +121,7 @@
     const container = document.querySelector(".container");
     if (!container) return;
     const viewportWidth = window.innerWidth;
-    const padding = viewportWidth < 767 ? 100 : 40;
+    const padding = viewportWidth < 767 ? 100 : viewportWidth > 1200 ? 40 : 200;
     const containerWidth = container.offsetWidth - padding; // fallback if .container not found
     const slides = document.querySelectorAll(".pd-slider .swiper-slide");
     slides.forEach((slide) => {
@@ -150,10 +138,10 @@
     grabCursor: true,
     loop: true,
     spaceBetween: 0,
-    autoplay: {
-      delay: 2800,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 2800,
+    //   disableOnInteraction: false,
+    // },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

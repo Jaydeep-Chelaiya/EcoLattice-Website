@@ -90,6 +90,36 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   transition: all 320ms ease-in-out;
 }
 
+.animated {
+  will-change: transform;
+  transition: transform 700ms linear;
+}
+.animated.swingInX {
+  animation: swingInX 700ms both;
+  transform-origin: top;
+}
+.animated.swingOutX {
+  animation: swingOutX 700ms both;
+  backface-visibility: visible !important;
+  transform-origin: top;
+}
+
+@keyframes swingInX {
+  0% {
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg);
+  }
+}
+@keyframes swingOutX {
+  0% {
+    transform: perspective(1000px) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+}
 .navbar {
   border-radius: 30px;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
@@ -201,6 +231,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 992px) {
+  .header {
+    margin: 35px 40px 0;
+  }
   .navbar {
     padding: 0 15px;
     border-radius: 56px;
@@ -219,7 +252,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     height: 10px;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 15px 22px;
+    padding: 15px 18px;
   }
   .nav-item {
     padding: 14px 0;
@@ -232,7 +265,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     display: none;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
-    top: 80px;
+    top: 78px;
     left: 8px;
     padding: 10px;
     margin-top: 0;
@@ -240,16 +273,13 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .dropdown-item {
     padding: 10px 15px;
-    font-size: 18px;
+    font-size: 16px;
   }
   .navbar-collapse {
     padding: 0;
   }
 }
 @media all and (min-width: 1200px) {
-  .header {
-    margin: 30px 30px 0;
-  }
   .navbar-nav .nav-link {
     font-size: 17px;
   }
@@ -283,6 +313,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     top: 92px;
+  }
+  .dropdown-item {
+    font-size: 18px;
   }
 }
 /* =======================================
@@ -537,6 +570,16 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   outline: 0;
 }
 
+@media all and (min-width: 760px) {
+  .hm-banner-sec {
+    height: 56vh;
+  }
+}
+@media all and (min-width: 1200px) {
+  .hm-banner-sec {
+    height: 100vh;
+  }
+}
 /* =======================================
 ======= Home About Us Area Styles ========
 ======================================= */
@@ -550,6 +593,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   line-height: 1.25;
   font-weight: 700;
   margin-bottom: 15px;
+  color: #565656;
 }
 
 .sec-tagline {
@@ -747,10 +791,20 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     margin: 110px 0;
   }
   .sec-title {
-    font-size: 38px;
+    font-size: 32px;
+  }
+  .sec-description {
+    font-size: 18px;
   }
   .hm-about-banner-area {
-    padding: 40px 60px;
+    padding: 60px;
+    align-items: flex-start;
+  }
+  .hm-about-sec .sec-tagline {
+    font-size: 18px;
+  }
+  .hm-about-banner-img {
+    margin-top: 0;
   }
 }
 @media all and (min-width: 1200px) {
@@ -838,6 +892,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 ======================================= */
 .benefit-slider-area {
   margin-top: 25px;
+  margin-left: 20px;
 }
 
 .hmBenefitSlider .swiper-wrapper {
@@ -877,7 +932,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   margin-bottom: 10px;
 }
 .benefit-content p {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0;
 }
 
@@ -890,9 +945,10 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .hmBenefitSlider .swiper-slide {
     transform: scale(0.55);
+    transform-origin: 0;
   }
-  .hmBenefitSlider .swiper-slide.swiper-slide-active {
-    margin-right: 0 !important;
+  .hmBenefitSlider .swiper-slide.swiper-slide-next {
+    transform-origin: center center;
   }
   .benefit-slider-area {
     position: absolute;
@@ -901,6 +957,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     width: 58%;
     left: 45%;
     margin-top: 0;
+    margin-left: 0;
   }
   .dot-pagination {
     position: relative;
@@ -930,17 +987,17 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     margin: 150px 0;
   }
   .hm-benefit-sec .sec-content {
-    max-width: 35%;
+    max-width: 30%;
   }
   .benefit-slider-area {
-    width: 60%;
-    left: 40%;
-  }
-  .hmBenefitSlider .swiper-slide.swiper-slide-active {
-    margin-right: -15px !important;
+    width: 70%;
+    left: 34%;
   }
   .benefit-box {
-    padding: 50px 30px 50px 35px;
+    padding: 50px 30px 80px 35px;
+  }
+  .benefit-content p {
+    font-size: 18px;
   }
 }
 @media all and (min-width: 1200px) {
@@ -961,11 +1018,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     height: 14px;
     width: 14px;
   }
+  .benefit-slider-area {
+    left: 40%;
+  }
   .hmBenefitSlider .swiper-slide {
     transform: scale(0.45);
-  }
-  .hmBenefitSlider .swiper-slide.swiper-slide-active {
-    margin-right: 0;
   }
   .benefit-box {
     padding: 75px 40px;
@@ -1005,9 +1062,6 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .hmBenefitSlider .swiper-slide {
     transform: scale(0.52);
-  }
-  .hmBenefitSlider .swiper-slide.swiper-slide-active {
-    margin-right: 0 !important;
   }
   .benefit-box {
     padding: 100px 60px;
@@ -1328,6 +1382,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 10px;
+  color: #565656;
 }
 
 .banner-description {
@@ -1343,7 +1398,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 @media all and (min-width: 760px) {
   .inside-banner-sec {
-    margin-top: 115px;
+    margin-top: 160px;
   }
   .inside-banner-sec .container {
     padding: 0 20px;
@@ -1380,7 +1435,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 @media all and (min-width: 1200px) {
   .inside-banner-sec {
-    margin-top: 135px;
+    margin-top: 190px;
   }
   .banner-container {
     padding: 80px 60px 90px 60px;
@@ -1388,7 +1443,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     min-height: 510px;
   }
   .banner-content {
-    max-width: 40%;
+    max-width: 42%;
   }
   .banner-title-area .sec-cta {
     font-size: 20px;
@@ -1411,28 +1466,22 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 1400px) {
-  .inside-banner-sec {
-    margin-top: 150px;
-  }
   .banner-container {
     background-position: center center;
     padding: 120px 60px 90px 60px;
     min-height: 580px;
   }
   .banner-content {
-    max-width: 34%;
+    max-width: 48%;
   }
 }
 @media all and (min-width: 1700px) {
-  .inside-banner-sec {
-    margin-top: 170px;
-  }
   .banner-container {
     padding: 170px 70px 120px 70px;
     min-height: 730px;
   }
   .banner-content {
-    max-width: 32%;
+    max-width: 46%;
   }
   .breadcrumb {
     --bs-breadcrumb-font-size: 1.375rem;
@@ -1577,7 +1626,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 ====== About Timeline Area Styles ======
 ===================================== */
 .timelineSwiper {
-  overflow: visible;
+  overflow: hidden;
 }
 .timelineSwiper .swiper-slide {
   color: #fff;
@@ -1591,6 +1640,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 
 @media all and (min-width: 1200px) {
+  .timelineSwiper {
+    overflow: visible;
+  }
   .timelineSwiper .swiper-slide {
     padding: 50px 40px;
     border-radius: 30px;
@@ -1616,6 +1668,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   margin-top: 50px;
 }
 
+.pr-card .pr-img img {
+  border-radius: 20px;
+}
 .pr-card .pr-detail {
   margin-top: 25px;
 }
@@ -1690,6 +1745,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .pr-card {
     width: calc(33.3333333333% - 50px);
+  }
+  .pr-card .pr-img img {
+    border-radius: 30px;
   }
   .pr-card .pr-detail {
     margin-top: 30px;
@@ -1971,7 +2029,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     row-gap: 50px;
   }
   .product-content {
-    padding: 140px 280px 140px 60px;
+    padding: 140px 335px 140px 60px;
   }
   .product-img-area {
     width: 43%;
@@ -2047,17 +2105,17 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     background-image: url(../img/interiors-banner-img.jpg);
   }
   .interiors-banner .banner-content {
-    max-width: 56%;
+    max-width: 40%;
   }
 }
 @media all and (min-width: 1400px) {
   .interiors-banner .banner-content {
-    max-width: 47%;
+    max-width: 36%;
   }
 }
 @media all and (min-width: 1700px) {
   .interiors-banner .banner-content {
-    max-width: 45%;
+    max-width: 34%;
   }
 }
 /* ==========================================
@@ -2268,7 +2326,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 @media all and (min-width: 1700px) {
   .pd-top-area .pd-title {
-    width: 54%;
+    width: 52%;
   }
   .pd-items-container .pd-item {
     padding: 85px 0;
@@ -2288,6 +2346,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .pd-gallery {
   background-color: #f0f7f3;
   padding: 60px 0;
+  margin-top: 60px;
 }
 
 .g-top-area {
@@ -2352,6 +2411,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 @media all and (min-width: 992px) {
   .pd-gallery {
     padding: 110px 0;
+    margin-top: 100px;
   }
   .gallery-container {
     gap: 45px;
@@ -2374,6 +2434,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 1400px) {
+  .pd-gallery {
+    margin-top: 120px;
+  }
   .gallery-container {
     gap: 25px;
   }
@@ -2419,6 +2482,24 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .wellness-banner {
     background-position: center center;
     background-image: url(../img/wellness-banner.jpg);
+  }
+  .wellness-banner .banner-content {
+    max-width: 46%;
+  }
+}
+@media all and (min-width: 1200px) {
+  .wellness-banner .banner-content {
+    max-width: 38%;
+  }
+}
+@media all and (min-width: 1400px) {
+  .wellness-banner .banner-content {
+    max-width: 42%;
+  }
+}
+@media all and (min-width: 1700px) {
+  .wellness-banner .banner-content {
+    max-width: 40%;
   }
 }
 /* ==========================================
@@ -2746,6 +2827,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 .material-banner .banner-title {
   max-width: 76%;
+  color: #fff;
 }
 .material-banner .banner-title-area .sec-cta {
   color: #fff;
@@ -2767,11 +2849,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 @media all and (min-width: 1200px) {
   .material-banner {
     background-size: cover;
-    background-position: -140px bottom;
+    background-position: -80px bottom;
     padding: 50px 60px;
   }
   .material-banner .banner-content {
-    max-width: 52%;
+    max-width: 51%;
   }
   .material-banner .banner-title {
     max-width: 84%;
@@ -2779,11 +2861,8 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 @media all and (min-width: 1400px) {
   .material-banner {
-    background-position: -20px bottom;
+    background-position: -50px bottom;
     background-size: 105%;
-  }
-  .material-banner .banner-content {
-    max-width: 58%;
   }
   .material-banner .banner-title {
     max-width: 70%;
@@ -2792,10 +2871,10 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 @media all and (min-width: 1700px) {
   .material-banner {
     background-position: 0 bottom;
-    background-size: 102%;
+    background-size: 100%;
   }
   .material-banner .banner-content {
-    max-width: 55%;
+    max-width: 49%;
   }
 }
 /* ==========================================
@@ -3560,7 +3639,6 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     font-size: 18px !important;
     font-weight: 700 !important;
     padding: 22px 40px !important;
-    border-color: transparent !important;
   }
   .bpnKRL .bBKQWp::-moz-placeholder {
     font-weight: 700;

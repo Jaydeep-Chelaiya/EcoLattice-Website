@@ -5,6 +5,7 @@ $primary-color: #e5efe7;
 $secondary-color: #788e72;
 $white-color: #fff;
 $black-color: #000;
+$title-color: #565656;
 $transition: all 320ms ease-in-out;
 $line-height: 1.42857;
 $border-radius: 20px;
@@ -148,6 +149,35 @@ html[data-scroll-orientation="horizontal"] {
   margin: 20px 20px 0;
   transition: $transition;
 }
+.animated {
+  will-change: transform;
+  transition: transform 700ms linear;
+  &.swingInX {
+    animation: swingInX 700ms both;
+    transform-origin: top;
+  }
+  &.swingOutX {
+    animation: swingOutX 700ms both;
+    backface-visibility: visible !important;
+    transform-origin: top;
+  }
+}
+@keyframes swingInX {
+  0% {
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg);
+  }
+}
+@keyframes swingOutX {
+  0% {
+    transform: perspective(1000px) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+}
 .navbar {
   border-radius: 30px;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
@@ -250,6 +280,9 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 @include mediaQuery(min, 992px) {
+  .header {
+    margin: 35px 40px 0;
+  }
   .navbar {
     padding: 0 15px;
     border-radius: 56px;
@@ -270,7 +303,7 @@ html[data-scroll-orientation="horizontal"] {
     }
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 15px 22px;
+    padding: 15px 18px;
   }
   .nav-item {
     padding: 14px 0;
@@ -283,7 +316,7 @@ html[data-scroll-orientation="horizontal"] {
     display: none;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
-    top: 80px;
+    top: 78px;
     left: 8px;
     padding: 10px;
     margin-top: 0;
@@ -291,16 +324,13 @@ html[data-scroll-orientation="horizontal"] {
   }
   .dropdown-item {
     padding: 10px 15px;
-    font-size: 18px;
+    font-size: 16px;
   }
   .navbar-collapse {
     padding: 0;
   }
 }
 @include mediaQuery(min, 1200px) {
-  .header {
-    margin: 30px 30px 0;
-  }
   .navbar-nav {
     .nav-link {
       font-size: $font-size-lg - 1;
@@ -340,6 +370,9 @@ html[data-scroll-orientation="horizontal"] {
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     top: 92px;
+  }
+  .dropdown-item {
+    font-size: $font-size-lg;
   }
 }
 
@@ -582,13 +615,22 @@ html[data-scroll-orientation="horizontal"] {
   height: 100vh;
   width: 100%;
 }
-
 .banner-vdo {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   outline: 0;
+}
+@include mediaQuery(min, 760px) {
+  .hm-banner-sec {
+    height: 56vh;
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .hm-banner-sec {
+    height: 100vh;
+  }
 }
 
 /* =======================================
@@ -603,6 +645,7 @@ html[data-scroll-orientation="horizontal"] {
   line-height: 1.25;
   font-weight: 700;
   margin-bottom: 15px;
+  color: $title-color;
 }
 .sec-tagline {
   font-family: $secondary-font-family;
@@ -801,10 +844,22 @@ html[data-scroll-orientation="horizontal"] {
     margin: 110px 0;
   }
   .sec-title {
-    font-size: $title-xl;
+    font-size: $title-lg - 2;
+  }
+  .sec-description {
+    font-size: $font-size-lg;
   }
   .hm-about-banner-area {
-    padding: $spacing-xl $section-space-md;
+    padding: $section-space-md;
+    align-items: flex-start;
+  }
+  .hm-about-sec {
+    .sec-tagline {
+      font-size: $font-size-lg;
+    }
+  }
+  .hm-about-banner-img {
+    margin-top: 0;
   }
 }
 @include mediaQuery(min, 1200px) {
@@ -897,6 +952,7 @@ html[data-scroll-orientation="horizontal"] {
 ======================================= */
 .benefit-slider-area {
   margin-top: $spacing-md + 5;
+  margin-left: $spacing-md;
 }
 .hmBenefitSlider {
   .swiper-wrapper {
@@ -932,7 +988,7 @@ html[data-scroll-orientation="horizontal"] {
     margin-bottom: $spacing-xs;
   }
   p {
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
     margin-bottom: 0;
   }
 }
@@ -946,8 +1002,9 @@ html[data-scroll-orientation="horizontal"] {
   .hmBenefitSlider {
     .swiper-slide {
       transform: scale(0.55);
-      &.swiper-slide-active {
-        margin-right: 0 !important;
+      transform-origin: 0;
+      &.swiper-slide-next {
+        transform-origin: center center;
       }
     }
   }
@@ -958,6 +1015,7 @@ html[data-scroll-orientation="horizontal"] {
     width: 58%;
     left: 45%;
     margin-top: 0;
+    margin-left: 0;
   }
   .dot-pagination {
     position: relative;
@@ -984,22 +1042,20 @@ html[data-scroll-orientation="horizontal"] {
     position: relative;
     margin: 150px 0;
     .sec-content {
-      max-width: 35%;
+      max-width: 30%;
     }
   }
   .benefit-slider-area {
-    width: 60%;
-    left: 40%;
-  }
-  .hmBenefitSlider {
-    .swiper-slide {
-      &.swiper-slide-active {
-        margin-right: -15px !important;
-      }
-    }
+    width: 70%;
+    left: 34%;
   }
   .benefit-box {
-    padding: 50px 30px 50px 35px;
+    padding: 50px 30px 80px 35px;
+  }
+  .benefit-content {
+    p {
+      font-size: $font-size-lg;
+    }
   }
 }
 @include mediaQuery(min, 1200px) {
@@ -1020,12 +1076,12 @@ html[data-scroll-orientation="horizontal"] {
       }
     }
   }
+  .benefit-slider-area {
+    left: 40%;
+  }
   .hmBenefitSlider {
     .swiper-slide {
       transform: scale(0.45);
-      &.swiper-slide-active {
-        margin-right: 0;
-      }
     }
   }
   .benefit-box {
@@ -1067,9 +1123,6 @@ html[data-scroll-orientation="horizontal"] {
   .hmBenefitSlider {
     .swiper-slide {
       transform: scale(0.52);
-      &.swiper-slide-active {
-        margin-right: 0 !important;
-      }
     }
   }
   .benefit-box {
@@ -1402,6 +1455,7 @@ html[data-scroll-orientation="horizontal"] {
   font-size: $title-md;
   font-weight: 700;
   margin-bottom: $spacing-xs;
+  color: $title-color;
 }
 .banner-description {
   font-size: $font-size-md;
@@ -1417,7 +1471,7 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 760px) {
   .inside-banner-sec {
-    margin-top: 115px;
+    margin-top: 160px;
     .container {
       padding: 0 20px;
     }
@@ -1454,7 +1508,7 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 1200px) {
   .inside-banner-sec {
-    margin-top: 135px;
+    margin-top: 190px;
   }
   .banner-container {
     padding: 80px 60px 90px 60px;
@@ -1462,7 +1516,7 @@ html[data-scroll-orientation="horizontal"] {
     min-height: 510px;
   }
   .banner-content {
-    max-width: 40%;
+    max-width: 42%;
   }
   .banner-title-area {
     .sec-cta {
@@ -1493,28 +1547,22 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 @include mediaQuery(min, 1400px) {
-  .inside-banner-sec {
-    margin-top: 150px;
-  }
   .banner-container {
     background-position: center center;
     padding: 120px 60px 90px 60px;
     min-height: 580px;
   }
   .banner-content {
-    max-width: 34%;
+    max-width: 48%;
   }
 }
 @include mediaQuery(min, 1700px) {
-  .inside-banner-sec {
-    margin-top: 170px;
-  }
   .banner-container {
     padding: 170px 70px 120px 70px;
     min-height: 730px;
   }
   .banner-content {
-    max-width: 32%;
+    max-width: 46%;
   }
   .breadcrumb {
     --bs-breadcrumb-font-size: 1.375rem;
@@ -1665,7 +1713,7 @@ html[data-scroll-orientation="horizontal"] {
 ====== About Timeline Area Styles ======
 ===================================== */
 .timelineSwiper {
-  overflow: visible;
+  overflow: hidden;
   .swiper-slide {
     color: $white-color;
     margin-right: 20px;
@@ -1679,6 +1727,7 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 1200px) {
   .timelineSwiper {
+    overflow: visible;
     .swiper-slide {
       padding: $spacing-xxl $spacing-xl;
       border-radius: $border-radius-lg;
@@ -1707,6 +1756,11 @@ html[data-scroll-orientation="horizontal"] {
   margin-top: 50px;
 }
 .pr-card {
+  .pr-img {
+    img {
+      border-radius: $border-radius;
+    }
+  }
   .pr-detail {
     margin-top: 25px;
     h4 {
@@ -1787,6 +1841,11 @@ html[data-scroll-orientation="horizontal"] {
   }
   .pr-card {
     width: calc((100% / 3) - 50px);
+    .pr-img {
+      img {
+        border-radius: $border-radius-lg;
+      }
+    }
     .pr-detail {
       margin-top: 30px;
       h4 {
@@ -2080,7 +2139,7 @@ html[data-scroll-orientation="horizontal"] {
     row-gap: 50px;
   }
   .product-content {
-    padding: 140px 280px 140px 60px;
+    padding: 140px 335px 140px 60px;
   }
   .product-img-area {
     width: 43%;
@@ -2172,21 +2231,21 @@ html[data-scroll-orientation="horizontal"] {
   .interiors-banner {
     background-image: url(../img/interiors-banner-img.jpg);
     .banner-content {
-      max-width: 56%;
+      max-width: 40%;
     }
   }
 }
 @include mediaQuery(min, 1400px) {
   .interiors-banner {
     .banner-content {
-      max-width: 47%;
+      max-width: 36%;
     }
   }
 }
 @include mediaQuery(min, 1700px) {
   .interiors-banner {
     .banner-content {
-      max-width: 45%;
+      max-width: 34%;
     }
   }
 }
@@ -2413,7 +2472,7 @@ html[data-scroll-orientation="horizontal"] {
 @include mediaQuery(min, 1700px) {
   .pd-top-area {
     .pd-title {
-      width: 54%;
+      width: 52%;
     }
   }
   .pd-items-container {
@@ -2437,6 +2496,7 @@ html[data-scroll-orientation="horizontal"] {
 .pd-gallery {
   background-color: #f0f7f3;
   padding: 60px 0;
+  margin-top: 60px;
 }
 .g-top-area {
   margin-bottom: 30px;
@@ -2498,6 +2558,7 @@ html[data-scroll-orientation="horizontal"] {
 @include mediaQuery(min, 992px) {
   .pd-gallery {
     padding: 110px 0;
+    margin-top: 100px;
   }
   .gallery-container {
     gap: 45px;
@@ -2520,6 +2581,9 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 @include mediaQuery(min, 1400px) {
+  .pd-gallery {
+    margin-top: 120px;
+  }
   .gallery-container {
     gap: 25px;
     .gallery-item {
@@ -2565,6 +2629,30 @@ html[data-scroll-orientation="horizontal"] {
   .wellness-banner {
     background-position: center center;
     background-image: url(../img/wellness-banner.jpg);
+    .banner-content {
+      max-width: 46%;
+    }
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .wellness-banner {
+    .banner-content {
+      max-width: 38%;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .wellness-banner {
+    .banner-content {
+      max-width: 42%;
+    }
+  }
+}
+@include mediaQuery(min, 1700px) {
+  .wellness-banner {
+    .banner-content {
+      max-width: 40%;
+    }
   }
 }
 
@@ -2918,6 +3006,7 @@ html[data-scroll-orientation="horizontal"] {
   }
   .banner-title {
     max-width: 76%;
+    color: $white-color;
   }
   .banner-title-area .sec-cta {
     color: $white-color;
@@ -2939,10 +3028,10 @@ html[data-scroll-orientation="horizontal"] {
 @include mediaQuery(min, 1200px) {
   .material-banner {
     background-size: cover;
-    background-position: -140px bottom;
+    background-position: -80px bottom;
     padding: 50px 60px;
     .banner-content {
-      max-width: 52%;
+      max-width: 51%;
     }
     .banner-title {
       max-width: 84%;
@@ -2951,11 +3040,9 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 1400px) {
   .material-banner {
-    background-position: -20px bottom;
+    background-position: -50px bottom;
     background-size: 105%;
-    .banner-content {
-      max-width: 58%;
-    }
+
     .banner-title {
       max-width: 70%;
     }
@@ -2964,9 +3051,9 @@ html[data-scroll-orientation="horizontal"] {
 @include mediaQuery(min, 1700px) {
   .material-banner {
     background-position: 0 bottom;
-    background-size: 102%;
+    background-size: 100%;
     .banner-content {
-      max-width: 55%;
+      max-width: 49%;
     }
   }
 }
@@ -3756,7 +3843,7 @@ html[data-scroll-orientation="horizontal"] {
       font-size: $font-size-lg !important;
       font-weight: 700 !important;
       padding: 22px 40px !important;
-      border-color: transparent !important;
+      // border-color: transparent !important;
       &::placeholder {
         font-weight: 700;
       }
