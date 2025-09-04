@@ -54,7 +54,7 @@
     loop: true,
     watchSlidesProgress: true,
     autoplay: {
-      delay: 3000,
+      delay: 8000,
       disableOnInteraction: false,
     },
     pagination: {
@@ -138,10 +138,10 @@
     grabCursor: true,
     loop: true,
     spaceBetween: 0,
-    // autoplay: {
-    //   delay: 2800,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 2800,
+      disableOnInteraction: false,
+    },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

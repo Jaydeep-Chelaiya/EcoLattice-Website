@@ -3029,7 +3029,6 @@ html[data-scroll-orientation="horizontal"] {
   .material-banner {
     background-size: cover;
     background-position: -80px bottom;
-    padding: 50px 60px;
     .banner-content {
       max-width: 51%;
     }
@@ -3053,7 +3052,7 @@ html[data-scroll-orientation="horizontal"] {
     background-position: 0 bottom;
     background-size: 100%;
     .banner-content {
-      max-width: 49%;
+      max-width: 52%;
     }
   }
 }
@@ -3063,7 +3062,7 @@ html[data-scroll-orientation="horizontal"] {
 ========================================== */
 .materials-item-container {
   margin-top: $spacing-lg;
-  @include flex(flex-start, flex-start);
+  @include flex(stretch, flex-start);
   flex-direction: column;
   row-gap: 24px;
 }
@@ -3326,6 +3325,7 @@ html[data-scroll-orientation="horizontal"] {
   @include flex(flex-start, flex-start);
   flex-direction: column;
   row-gap: 12px;
+  width: 100%;
   max-width: 100%;
 }
 .process-box-img {
