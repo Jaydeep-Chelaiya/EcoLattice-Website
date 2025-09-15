@@ -131,11 +131,11 @@
               </div>
             </div>
             <h3 class="single-product-title">Contour Chair</h3>
-            <p class="single-product-description">An ergonomically designed contour chair fits the natural curves of the body. Harinad P Manoj crafted this for a customised fit, featuring lumbar support and adjustable armrests, height, and backrest tilt.</p>
+            <p class="single-product-description">This ergonomically designed Contour chair is tailored to fit the natural curves of the body. Crafted for a customised fit, Contour features a lumbar support and adjustable armrests, height, and backrest tilt.</p>
           </a>
           <a href="#" class="gallery-item cta-main">
             <div class="single-product-img">
-              <img src="../assets/img/contour-family-interior.jpg" alt="" />
+              <img src="../assets/img/spin-stool-interior.jpg" alt="" />
               <div class="cta-container small-cta-container">
                 <div class="button-arrow-container" style="background-color: #f0f7f3">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F0F7F3"></path></svg>
@@ -148,8 +148,8 @@
                 </div>
               </div>
             </div>
-            <h3 class="single-product-title">Contour Family</h3>
-            <p class="single-product-description">Give your living space a fun twist with EcoLattice exclusive three-of-a-kind Contour Family, featuring Evoque and Contour Chair with a Spin Stool for better ergonomics and distinctive style.</p>
+            <h3 class="single-product-title">Spin Stool</h3>
+            <p class="single-product-description">Give your living space a fun twist with the Spin Stool. Created by Harinad P Manoj, this compact and versatile stool is decorated in a distinctive style.</p>
           </a>
           <a href="#" class="gallery-item cta-main">
             <div class="single-product-img">
@@ -483,7 +483,7 @@
           </div>
           <div class="pd-item" style="background-color: #b9c9bf">
             <img src="../assets/img/customisable-designs-icon.svg" alt="" />
-            <p>Customizable <br />Designs</p>
+            <p>Customisable <br />Designs</p>
             <div class="cta-container small-cta-container">
               <div class="button-arrow-container">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#FFFFFF"></path></svg>
@@ -519,6 +519,35 @@
     </section>
     <!-- Single Product Advantages Area Ends -->
 
+    <!-- Home Clients Area Starts -->
+    <section class="hm-client-sec sec-spacing">
+      <div class="container">
+        <div class="sec-content text-center">
+          <h6 class="sec-title">Interested Companies</h6>
+        </div>
+      </div>
+      <div class="hm-companies-slider swiper no-animate-large">
+        <div class="swiper-wrapper duration-small justify-content-lg-center">
+          <div class="swiper-slide">
+            <a href="https://www.ikea.com/" target="_blank" class="company-logo"><img src="../assets/img/ikea-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.haworth.com/" target="_blank" class="company-logo"><img src="../assets/img/haworth-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.humanscale.com/" target="_blank" class="company-logo"><img src="../assets/img/humanscale-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.aram.co.uk/" target="_blank" class="company-logo"><img src="../assets/img/aram-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://oxfordproductdesign.com/" target="_blank" class="company-logo"><img src="../assets/img/opd-logo.jpg" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Home Clients Area Ends -->
+
     <!-- About Us Connect Us Area Starts -->
     <section class="sec-spacing sec-connect">
       <div class="container">
@@ -538,14 +567,14 @@
               <span>Get a sample</span>
               <span class="cta-arrow"><img src="../assets/img/accordian-arrow.svg" alt="Navigation Arrow" /></span>
             </a>
-            <p>Experience the quality of our eco-friendly materials firsthand by requesting a sample designed just for you.</p>
+            <p>Experience the quality of our eco-friendly materials firsthand by requesting a high-quality sample of our lattice.</p>
           </div>
           <div class="connect-item">
             <a href="https://forms.gle/FNAAEsFs3AmQ3Gzs6" target="_blank" class="sec-cta">
-              <span>Make your Own Sample</span>
+              <span>Customise a Sample</span>
               <span class="cta-arrow"><img src="../assets/img/accordian-arrow.svg" alt="Navigation Arrow" /></span>
             </a>
-            <p>Become part of a community that values innovation, sustainability, and the future of material science.</p>
+            <p>Have a specific idea in mind? We can also create a sample tailored just for you.</p>
           </div>
         </div>
       </div>
@@ -647,5 +676,28 @@
     <script src="../assets/js/headroom.min.js"></script>
     <!-- Custom JS -->
     <script src="../assets/js/custom.js"></script>
+    <script>
+      function initSwiperOnLargeScreens() {
+        if (window.innerWidth <= 992) {
+          const container = document.querySelector(".hm-companies-slider");
+          const wrapper = container.querySelector(".swiper-wrapper");
+          if (!container.classList.contains("swiper-initialized")) {
+            const slides = Array.from(wrapper.children);
+            slides.forEach((slide) => {
+              wrapper.appendChild(slide.cloneNode(true));
+            });
+            new Swiper(".hm-companies-slider", {
+              slidesPerView: "auto",
+              freeMode: true,
+              freeModeMomentum: false,
+              allowTouchMove: false,
+            });
+            container.classList.add("swiper-initialized");
+          }
+        }
+      }
+      window.addEventListener("load", initSwiperOnLargeScreens);
+      window.addEventListener("resize", initSwiperOnLargeScreens);
+    </script>
   </body>
 </html>

@@ -13,7 +13,7 @@ body {
   font-family: "Assistant", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #000;
+  color: #565656;
   line-height: 1.25;
   overflow-x: hidden;
 }
@@ -37,6 +37,10 @@ ol {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+}
+
+.text-dark {
+  color: #565656 !important;
 }
 
 html.lenis {
@@ -160,7 +164,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   color: #788e72;
 }
 .navbar-nav .nav-link:hover {
-  color: #000;
+  color: #565656;
 }
 
 .nav-item {
@@ -218,7 +222,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 .dropdown-item:hover, .dropdown-item:active, .dropdown-item.active {
   background-color: #e5efe7;
-  color: #000;
+  color: #565656;
 }
 
 @media all and (min-width: 760px) {
@@ -661,6 +665,15 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   transform: rotate(45deg);
 }
 
+.bkgd-cta {
+  background-color: #788e72;
+  padding: 10px 10px 10px 25px;
+  border-radius: 30px;
+}
+.bkgd-cta span {
+  color: #fff;
+}
+
 .cta-container {
   position: absolute;
   right: -1px;
@@ -822,6 +835,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     border-radius: 30px;
     padding: 100px 100px;
   }
+  .hm-about-sec .sec-tagline {
+    padding-top: 15px;
+    font-size: 20px;
+    line-height: 1.55357;
+  }
   .sec-cta .cta-arrow {
     margin-left: 20px;
   }
@@ -838,7 +856,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .cta-container.small-cta-container .button-arrow-container > svg:last-of-type {
     top: auto;
-    left: -19px;
+    left: -20px;
   }
   .cta-container.small-cta-container .button-arrow {
     height: 44px;
@@ -1296,6 +1314,49 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 /* =======================================
 ======== Home Clients Area Styles ========
 ======================================= */
+.hm-companies-slider {
+  margin-top: 20px;
+}
+.hm-companies-slider.no-animate .swiper-wrapper {
+  animation: none;
+  width: 100%;
+}
+
+.hm-companies-slider .swiper-wrapper {
+  animation: marquee 40s linear infinite;
+  display: flex;
+  width: -moz-max-content;
+  width: max-content;
+}
+.hm-companies-slider .swiper-wrapper.duration-small {
+  animation-duration: 20s;
+}
+
+.hm-companies-slider:hover .swiper-wrapper {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.hm-companies-slider .swiper-slide {
+  width: -moz-max-content;
+  width: max-content;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.company-logo {
+  display: block;
+  width: 180px;
+}
+
 .hm-client-area {
   display: flex;
   align-items: flex-start;
@@ -1324,10 +1385,44 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .hm-single-client {
     width: calc(25% - 15px);
   }
+  .hm-companies-slider.no-animate-large .swiper-wrapper {
+    width: 100%;
+    animation: none;
+  }
 }
 @media all and (min-width: 1200px) {
   .hm-single-client img {
     border-radius: 30px;
+  }
+  .hm-companies-slider {
+    margin-top: 30px;
+  }
+  .hm-companies-slider.no-animate-large {
+    padding: 0 20px;
+  }
+  .hm-companies-slider.no-animate-large .swiper-wrapper {
+    width: 100%;
+    animation: none;
+  }
+  .hm-companies-slider .swiper-slide {
+    margin-right: 20px;
+  }
+  .company-logo {
+    width: 220px;
+  }
+}
+@media all and (min-width: 1700px) {
+  .hm-single-client img {
+    border-radius: 30px;
+  }
+  .hm-companies-slider {
+    margin-top: 40px;
+  }
+  .hm-companies-slider .swiper-slide {
+    margin-right: 26px;
+  }
+  .company-logo {
+    width: 240px;
   }
 }
 /* ========================================
@@ -1430,7 +1525,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     background-image: url(../img/abt-banner-img.jpg);
   }
   .banner-content {
-    max-width: 48%;
+    max-width: 65%;
   }
 }
 @media all and (min-width: 1200px) {
@@ -1443,7 +1538,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     min-height: 510px;
   }
   .banner-content {
-    max-width: 42%;
+    max-width: 62%;
   }
   .banner-title-area .sec-cta {
     font-size: 20px;
@@ -1481,7 +1576,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     min-height: 730px;
   }
   .banner-content {
-    max-width: 46%;
+    max-width: 51%;
   }
   .breadcrumb {
     --bs-breadcrumb-font-size: 1.375rem;
@@ -1549,16 +1644,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 
 .mvv-heading {
   font-size: 24px;
-  border-radius: 30px;
-  max-width: -moz-max-content;
-  max-width: max-content;
-  margin: 20px auto;
-  padding: 12px 40px 8px 40px;
   font-family: "Comfortaa", sans-serif;
   color: #fff;
   line-height: 1.42857;
   text-align: center;
-  min-width: 180px;
+  margin-top: 30px;
 }
 
 .single-mvv-card .card-text {
@@ -1578,20 +1668,21 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     border-radius: 20px;
     padding: 40px 30px 80px 30px;
   }
+  .mvv-heading {
+    font-size: 30px;
+    margin-top: 40px;
+  }
 }
 @media all and (min-width: 1700px) {
   .single-mvv-card {
     border-radius: 30px;
-    padding: 50px 40px;
+    padding: 80px 40px 95px 40px;
   }
   .mvv-heading {
-    font-size: 30px;
-    margin: 25px auto;
-    padding: 10px 60px 6px 60px;
-    min-width: 240px;
+    font-size: 42px;
   }
   .single-mvv-card .card-text {
-    font-size: 20px;
+    font-size: 22px;
     margin: auto;
     max-width: 90%;
   }
@@ -1691,7 +1782,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   margin-bottom: 15px;
 }
 .pr-card .top-info .n-post {
-  color: #000;
+  color: #565656;
 }
 
 @media all and (min-width: 576px) {
@@ -1799,7 +1890,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .connect-items .connect-item .sec-cta {
   font-size: 20px;
   font-weight: 700;
-  color: #000;
+  color: #565656;
 }
 .connect-items .connect-item p {
   font-size: 16px;
@@ -1904,6 +1995,15 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 /* ================================================
 ====== Product Listing Banner Area Styles =========
 ================================================ */
+.product-banner {
+  background-image: url(../img/products-banner-img-mb.jpg);
+}
+
+@media all and (min-width: 992px) {
+  .product-banner {
+    background-image: url(../img/products-banner-img.jpg);
+  }
+}
 @media all and (min-width: 1200px) {
   .product-banner .banner-content {
     max-width: 46%;
@@ -2385,7 +2485,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .single-product-description {
   font-size: 16px;
   line-height: 1.42857;
-  color: #000;
+  color: #565656;
   display: -webkit-box;
   line-clamp: 7;
   -webkit-line-clamp: 7;
@@ -2578,7 +2678,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .contact-form .sec-cta {
   border: none;
   background-color: transparent;
-  color: #000;
+  color: #565656;
   font-weight: 700;
   margin-top: 20px;
 }
@@ -2711,7 +2811,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .loc-list li a {
   font-family: "Comfortaa", sans-serif;
   font-size: 14px;
-  color: #000;
+  color: #565656;
   line-height: 1.42857;
 }
 .loc-list .number-details {
@@ -2849,7 +2949,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 @media all and (min-width: 1200px) {
   .material-banner {
     background-size: cover;
-    background-position: -80px bottom;
+    background-position: 0 bottom;
   }
   .material-banner .banner-content {
     max-width: 51%;
@@ -2974,6 +3074,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   border-radius: 20px;
   position: relative;
   z-index: 1;
+  color: #565656;
 }
 .accordion .accordion-item .accordion-header {
   font-family: "Comfortaa", sans-serif;
@@ -2986,6 +3087,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   line-height: 1;
   font-size: 22px;
   font-weight: 700;
+  color: #565656;
   transition: all 320ms ease-in-out;
 }
 .accordion .accordion-item .accordion-header::after {
@@ -3130,26 +3232,44 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   max-width: 100%;
 }
 
+.processImageSlider {
+  position: relative;
+}
+
+.custom-button-prev,
+.custom-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  height: 30px;
+  width: 30px;
+  transition: all 320ms ease-in-out;
+}
+.custom-button-prev.swiper-button-disabled,
+.custom-button-next.swiper-button-disabled {
+  opacity: 0;
+}
+
+.custom-button-prev {
+  left: 20px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.custom-button-next {
+  right: 20px;
+}
+
 .process-box-img {
   width: 100%;
   position: relative;
   height: 260px;
 }
 .process-box-img .process-box-single-img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  opacity: 0;
   transition: opacity 0.4s ease-in-out;
   border-radius: 20px;
-  z-index: 0;
-}
-.process-box-img .process-box-single-img.active {
-  opacity: 1;
-  z-index: 1;
 }
 
 .process-content-wrapper {
@@ -3174,6 +3294,30 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .process-content p {
   font-size: 14px;
   line-height: 1.22857;
+}
+.process-content .step-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Assistant", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.process-content .step-container .step-no {
+  font-family: "Assistant", sans-serif;
+  background-color: #788e72;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 16px;
+  height: 30px;
+  width: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .process-pagination {
@@ -3246,6 +3390,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .process-box-img .process-box-single-img {
     border-radius: 30px;
+  }
+  .custom-button-prev,
+  .custom-button-next {
+    height: 40px;
+    width: 40px;
   }
   .process-content-wrapper {
     border-radius: 30px;
@@ -3381,17 +3530,17 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  color: #000;
+  color: #565656;
 }
 .single-blog a:hover {
-  color: #000;
+  color: #565656;
 }
 
 .date {
   display: block;
   font-size: 14px;
   margin-bottom: 6px;
-  color: #000;
+  color: #565656;
 }
 
 .blog-title {
@@ -3399,7 +3548,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   font-size: 20px;
   line-height: 1.42857;
   font-weight: 700;
-  color: #000;
+  color: #565656;
   bottom: 10px;
   transition: all 320ms ease-in-out;
 }
@@ -3424,11 +3573,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   border-radius: 30px;
   padding: 7px 25px 8px 25px;
   font-size: 16px;
-  color: #000;
+  color: #565656;
 }
 
 .blog-description p {
-  color: #000;
+  color: #565656;
   font-size: 16px;
   line-height: 1.42857;
   margin-bottom: 0;

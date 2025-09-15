@@ -297,6 +297,59 @@
     </section>
     <!-- Single Product Advantages Area Ends -->
 
+    <!-- Home Clients Area Starts -->
+    <section class="hm-client-sec sec-spacing">
+      <div class="container">
+        <div class="sec-content text-center">
+          <h6 class="sec-title">Interested Companies</h6>
+        </div>
+      </div>
+      <div class="hm-companies-slider swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="https://transcal.co.uk/engineering/" target="_blank" class="company-logo"><img src="../assets/img/transcal-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://morgan-motor.com/" target="_blank" class="company-logo"><img src="../assets/img/morgan-motor-company-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.hyundai.com/worldwide/en" target="_blank" class="company-logo"><img src="../assets/img/hyundai-motor-group-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.mahindra.com/" target="_blank" class="company-logo"><img src="../assets/img/mahindra-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.italdesign.it/en/" target="_blank" class="company-logo"><img src="../assets/img/italdesign-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.astonmartin.com/en/corporate" target="_blank" class="company-logo"><img src="../assets/img/aston-martin-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.alpine-cars.co.uk/" target="_blank" class="company-logo"><img src="../assets/img/alpine-cars-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.toyota-boshoku.com/global/" target="_blank" class="company-logo"><img src="../assets/img/toyota-boshoku-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.levc.com/" target="_blank" class="company-logo"><img src="../assets/img/levc-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.envisagegroupltd.com/" target="_blank" class="company-logo"><img src="../assets/img/enivisage-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.khalildesign.de/en" target="_blank" class="company-logo"><img src="../assets/img/khalil-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.stellantis.com/en" target="_blank" class="company-logo"><img src="../assets/img/stellantis-logo.jpg" /></a>
+          </div>
+          <div class="swiper-slide">
+            <a href="https://www.peugeot.co.uk/" target="_blank" class="company-logo"><img src="../assets/img/peugeot-logo.jpg" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Home Clients Area Ends -->
+
     <!-- About Us Connect Us Area Starts -->
     <section class="sec-spacing sec-connect">
       <div class="container">
@@ -316,14 +369,14 @@
               <span>Get a sample</span>
               <span class="cta-arrow"><img src="../assets/img/accordian-arrow.svg" alt="Navigation Arrow" /></span>
             </a>
-            <p>Experience the quality of our eco-friendly materials firsthand by requesting a sample designed just for you.</p>
+            <p>Experience the quality of our eco-friendly materials firsthand by requesting a high-quality sample of our lattice.</p>
           </div>
           <div class="connect-item">
             <a href="https://forms.gle/FNAAEsFs3AmQ3Gzs6" target="_blank" class="sec-cta">
-              <span>Make your Own Sample</span>
+              <span>Customise a Sample</span>
               <span class="cta-arrow"><img src="../assets/img/accordian-arrow.svg" alt="Navigation Arrow" /></span>
             </a>
-            <p>Become part of a community that values innovation, sustainability, and the future of material science.</p>
+            <p>Have a specific idea in mind? We can also create a sample tailored just for you.</p>
           </div>
         </div>
       </div>
@@ -425,5 +478,20 @@
     <script src="../assets/js/headroom.min.js"></script>
     <!-- Custom JS -->
     <script src="../assets/js/custom.js"></script>
+    <script>
+      // Duplicate slides for seamless continuous animation
+      const swiper1Wrapper = document.querySelector(".hm-companies-slider .swiper-wrapper");
+      const swiper1Slides = Array.from(swiper1Wrapper.children);
+      swiper1Slides.forEach((slide) => {
+        swiper1Wrapper.appendChild(slide.cloneNode(true));
+      });
+      // Initialize Swiper for proper sizing/layout
+      new Swiper(".hm-companies-slider", {
+        slidesPerView: "auto",
+        freeMode: true,
+        freeModeMomentum: false,
+        allowTouchMove: false,
+      });
+    </script>
   </body>
 </html>
