@@ -676,8 +676,8 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 
 .cta-container {
   position: absolute;
-  right: -1px;
-  bottom: -1px;
+  right: 0;
+  bottom: 0;
 }
 
 .button-arrow-container {
@@ -1711,6 +1711,248 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 @media all and (min-width: 1700px) {
   .story-content {
     max-width: 89%;
+  }
+}
+/* =====================================
+======== Milestones Area Styles ========
+===================================== */
+.horizontal-scroll-panel .sec-title {
+  margin-bottom: 0;
+}
+
+.horizontal-panel-container {
+  padding-top: 40px;
+}
+
+.horizontal-panel-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.milestone-main-logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.milestone-main-logo {
+  border-radius: 100%;
+  background: #f0f7f3;
+  border: 8px solid #9db7a9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+}
+.milestone-main-logo img {
+  width: 60px;
+}
+
+.milestone-logo-border {
+  width: 3px;
+  height: 60px;
+  background-color: #5e6e59;
+}
+
+.milestone-blocks-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.milestone-blocks-container .milestone-block-item {
+  position: relative;
+  padding: 20px 0 20px 20px;
+}
+.milestone-blocks-container .milestone-block-item .milestone-block-item-border {
+  top: 0px;
+}
+.milestone-blocks-container .milestone-block-item:first-of-type {
+  margin-left: 0;
+}
+.milestone-blocks-container .milestone-block-item:first-of-type .milestone-block-item-border {
+  width: calc(50% + 1.5px);
+}
+.milestone-blocks-container .milestone-block-item .milestone-block-item-dot {
+  height: 16px;
+  width: 16px;
+  background-color: #4f6454;
+  border-radius: 100%;
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  z-index: 2;
+}
+.milestone-blocks-container .milestone-block-item .milestone-block-item-border {
+  height: 3px;
+  width: 100%;
+  background-color: #5e6e59;
+  position: absolute;
+  left: 0;
+}
+
+.milestone-block-item-content {
+  background-color: #9db7a9;
+  border-radius: 20px;
+  position: relative;
+  padding: 30px 25px;
+  color: #565656;
+}
+.milestone-block-item-content::after {
+  content: "";
+  position: absolute;
+  background-color: #5e6e59;
+  height: calc(100% + 40px);
+  width: 3px;
+  left: -20px;
+  top: -20px;
+  z-index: 0;
+}
+
+.milestone-block-item-title {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.milestone-block-item-sub-title {
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 5px;
+  line-height: 1.15;
+}
+
+.milestone-block-item-paragraph {
+  font-size: 18px;
+  max-width: 90%;
+  line-height: 1.2;
+}
+
+@media all and (min-width: 760px) {
+  .horizontal-scroll-panel {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .horizontal-panel-content {
+    flex-direction: row;
+  }
+  .milestone-main-logo-area {
+    flex-direction: row;
+  }
+  .milestone-main-logo {
+    width: 164px;
+    height: 164px;
+  }
+  .milestone-main-logo img {
+    width: 70px;
+  }
+  .milestone-logo-border {
+    width: 140px;
+    height: 3px;
+  }
+  .milestone-blocks-container {
+    flex-direction: row;
+    -moz-column-gap: 100px;
+         column-gap: 100px;
+  }
+  .milestone-blocks-container .milestone-block-item {
+    margin-left: -190px;
+  }
+  .milestone-blocks-container .milestone-block-item:first-of-type .milestone-block-item-border {
+    width: 100%;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(odd) {
+    padding-top: 0;
+    padding-bottom: 45px;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(odd) .milestone-block-item-dot {
+    top: auto;
+    bottom: -8px;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(odd) .milestone-block-item-border {
+    bottom: -1px;
+    top: auto;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(odd) .milestone-block-item-content::after {
+    top: auto;
+    bottom: -45px;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) {
+    padding-top: 45px;
+    padding-bottom: 0;
+    margin-top: 304px;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .cta-container {
+    bottom: auto;
+    top: 0;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .cta-container.small-cta-container .button-arrow-container {
+    padding: 0 0 10px 10px;
+    border-radius: 0 0 0 50%;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .cta-container.small-cta-container .button-arrow-container > svg {
+    top: 0;
+    left: -18px;
+    transform: rotate(90deg);
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .cta-container.small-cta-container .button-arrow-container > svg:last-of-type {
+    left: auto;
+    top: auto;
+    right: 0;
+    bottom: -18px;
+    transform: rotate(90deg);
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .milestone-block-item-dot {
+    top: -8px;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .milestone-block-item-border {
+    top: -1px;
+  }
+  .milestone-blocks-container .milestone-block-item:nth-child(even) .milestone-block-item-content::after {
+    top: -45px;
+  }
+  .milestone-blocks-container .milestone-block-item:last-of-type .milestone-block-item-border {
+    width: 200%;
+  }
+  .milestone-blocks-container .milestone-block-item .milestone-block-item-dot {
+    left: auto;
+    right: 14px;
+  }
+  .milestone-block-item-content {
+    padding: 35px;
+    width: 360px;
+    height: 260px;
+  }
+  .milestone-block-item-content::after {
+    height: 45px;
+    left: auto;
+    right: 20.5px;
+    z-index: -1;
+  }
+  .milestone-block-item-title {
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+  .milestone-block-item-sub-title {
+    font-size: 23px;
+  }
+  .milestone-block-item-paragraph {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+}
+@media all and (min-width: 1200px) {
+  .horizontal-panel-container {
+    padding-top: 80px;
   }
 }
 /* =====================================
@@ -3457,6 +3699,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   background-color: #d1e6d9;
   color: #9fb7aa;
   border-radius: 30px;
+  font-size: 16px;
 }
 .nav-tabs .nav-link.active {
   color: #4f6454;
@@ -3464,6 +3707,16 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   background: #9db7a9;
 }
 
+@media all and (max-width: 390px) {
+  .nav-tabs .nav-link {
+    font-size: 14px;
+  }
+}
+@media all and (max-width: 350px) {
+  .nav-tabs .nav-link {
+    font-size: 12px;
+  }
+}
 @media all and (min-width: 760px) {
   .nav-tabs {
     justify-content: center;

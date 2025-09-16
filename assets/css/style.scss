@@ -720,8 +720,8 @@ html[data-scroll-orientation="horizontal"] {
 }
 .cta-container {
   position: absolute;
-  right: -1px;
-  bottom: -1px;
+  right: 0;
+  bottom: 0;
 }
 .button-arrow-container {
   border-radius: 50% 0 0 0;
@@ -1802,6 +1802,238 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 
+/* =====================================
+======== Milestones Area Styles ========
+===================================== */
+.horizontal-scroll-panel {
+  .sec-title {
+    margin-bottom: 0;
+  }
+}
+.horizontal-panel-container {
+  padding-top: $section-space-sm;
+}
+.horizontal-panel-content {
+  @include flex(center, flex-start);
+  flex-direction: column;
+}
+.milestone-main-logo-area {
+  @include flex(center, flex-start);
+  flex-direction: column;
+}
+.milestone-main-logo {
+  border-radius: 100%;
+  background: #f0f7f3;
+  border: 8px solid #9db7a9;
+  @include flex(center, center);
+  width: 140px;
+  height: 140px;
+  img {
+    width: 60px;
+  }
+}
+.milestone-logo-border {
+  width: 3px;
+  height: 60px;
+  background-color: #5e6e59;
+}
+.milestone-blocks-container {
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  .milestone-block-item {
+    position: relative;
+    padding: 20px 0 20px 20px;
+    .milestone-block-item-border {
+      top: 0px;
+    }
+    &:first-of-type {
+      margin-left: 0;
+      .milestone-block-item-border {
+        width: calc((100% / 2) + 1.5px);
+      }
+    }
+    .milestone-block-item-dot {
+      height: 16px;
+      width: 16px;
+      background-color: #4f6454;
+      border-radius: 100%;
+      position: absolute;
+      left: -7px;
+      top: -7px;
+      z-index: 2;
+    }
+    .milestone-block-item-border {
+      height: 3px;
+      width: 100%;
+      background-color: #5e6e59;
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+.milestone-block-item-content {
+  background-color: #9db7a9;
+  border-radius: $border-radius;
+  position: relative;
+  padding: $spacing-lg 25px;
+  color: $black-color;
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: #5e6e59;
+    height: calc(100% + 40px);
+    width: 3px;
+    left: -20px;
+    top: -20px;
+    z-index: 0;
+  }
+}
+.milestone-block-item-title {
+  font-family: $secondary-font-family;
+  font-weight: 700;
+  font-size: $title-sm;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.milestone-block-item-sub-title {
+  font-weight: 600;
+  font-size: $title-xs - 2;
+  margin-bottom: 5px;
+  line-height: 1.15;
+}
+.milestone-block-item-paragraph {
+  font-size: $font-size-lg;
+  max-width: 90%;
+  line-height: 1.2;
+}
+@include mediaQuery(min, 760px) {
+  .horizontal-scroll-panel {
+    height: 100vh;
+    @include flex(flex-start, center);
+    flex-direction: column;
+  }
+  .horizontal-panel-content {
+    flex-direction: row;
+  }
+  .milestone-main-logo-area {
+    flex-direction: row;
+  }
+  .milestone-main-logo {
+    width: 164px;
+    height: 164px;
+    img {
+      width: 70px;
+    }
+  }
+  .milestone-logo-border {
+    width: 140px;
+    height: 3px;
+  }
+  .milestone-blocks-container {
+    flex-direction: row;
+    column-gap: 100px;
+    .milestone-block-item {
+      margin-left: -190px;
+      &:first-of-type {
+        .milestone-block-item-border {
+          width: 100%;
+        }
+      }
+      &:nth-child(odd) {
+        padding-top: 0;
+        padding-bottom: 45px;
+        .milestone-block-item-dot {
+          top: auto;
+          bottom: -8px;
+        }
+        .milestone-block-item-border {
+          bottom: -1px;
+          top: auto;
+        }
+        .milestone-block-item-content {
+          &::after {
+            top: auto;
+            bottom: -45px;
+          }
+        }
+      }
+      &:nth-child(even) {
+        padding-top: 45px;
+        padding-bottom: 0;
+        margin-top: 304px;
+        .cta-container {
+          bottom: auto;
+          top: 0;
+          &.small-cta-container {
+            .button-arrow-container {
+              padding: 0 0 10px 10px;
+              border-radius: 0 0 0 50%;
+              & > svg {
+                top: 0;
+                left: -18px;
+                transform: rotate(90deg);
+                &:last-of-type {
+                  left: auto;
+                  top: auto;
+                  right: 0;
+                  bottom: -18px;
+                  transform: rotate(90deg);
+                }
+              }
+            }
+          }
+        }
+        .milestone-block-item-dot {
+          top: -8px;
+        }
+        .milestone-block-item-border {
+          top: -1px;
+        }
+        .milestone-block-item-content {
+          &::after {
+            top: -45px;
+          }
+        }
+      }
+      &:last-of-type {
+        .milestone-block-item-border {
+          width: 200%;
+        }
+      }
+      .milestone-block-item-dot {
+        left: auto;
+        right: 14px;
+      }
+    }
+  }
+  .milestone-block-item-content {
+    padding: $spacing-lg + 5;
+    width: 360px;
+    height: 260px;
+    &::after {
+      height: 45px;
+      left: auto;
+      right: 20.5px;
+      z-index: -1;
+    }
+  }
+  .milestone-block-item-title {
+    font-size: $title-lg;
+    margin-bottom: 10px;
+  }
+  .milestone-block-item-sub-title {
+    font-size: $title-xs - 1;
+  }
+  .milestone-block-item-paragraph {
+    font-size: $font-size-xl;
+    line-height: 1.15;
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .horizontal-panel-container {
+    padding-top: $section-space-lg;
+  }
+}
 /* =====================================
 ====== About Timeline Area Styles ======
 ===================================== */
@@ -3642,10 +3874,25 @@ html[data-scroll-orientation="horizontal"] {
     background-color: #d1e6d9;
     color: #9fb7aa;
     border-radius: 30px;
+    font-size: $font-size-md;
     &.active {
       color: #4f6454;
       font-weight: 700;
       background: #9db7a9;
+    }
+  }
+}
+@include mediaQuery(max, 390px) {
+  .nav-tabs {
+    .nav-link {
+      font-size: $font-size-sm;
+    }
+  }
+}
+@include mediaQuery(max, 350px) {
+  .nav-tabs {
+    .nav-link {
+      font-size: $font-size-xs;
     }
   }
 }

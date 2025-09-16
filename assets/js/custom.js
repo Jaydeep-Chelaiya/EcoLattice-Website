@@ -85,37 +85,6 @@
   });
   // Benefit Slider Area JS Ends
 
-  // About Timeline Slider Area JS Starts
-  var swiper = new Swiper(".timelineSwiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    loop: false,
-    centeredSlides: false,
-    slidesPerGroup: 1,
-    breakpoints: {
-      760: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-        centeredSlides: false,
-      },
-      992: {
-        slidesPerView: 2.5,
-        spaceBetween: 20,
-        centeredSlides: false,
-      },
-      1400: {
-        slidesPerView: 2.85,
-        spaceBetween: 30,
-        centeredSlides: false,
-      },
-    },
-  });
-  // About Timeline Slider Area JS Ends
-
   // Single Product Slider Area JS Starts
   function updateSlideWidths() {
     const container = document.querySelector(".container");
