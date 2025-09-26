@@ -3023,8 +3023,8 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(max, 576px) {
   .wellness-banner {
-    background-position: center -120px;
-    padding-bottom: 330px;
+    background-position: center -90px;
+    padding-bottom: 360px;
   }
 }
 @include mediaQuery(min, 767px) {
@@ -3072,8 +3072,8 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(max, 576px) {
   .automotive-banner {
-    background-position: center -115px;
-    padding-bottom: 380px;
+    background-position: center -75px;
+    padding-bottom: 420px;
   }
 }
 @include mediaQuery(min, 767px) {
