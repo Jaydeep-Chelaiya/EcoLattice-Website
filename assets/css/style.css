@@ -15,7 +15,8 @@ body {
   font-weight: 400;
   color: #565656;
   line-height: 1.25;
-  overflow-x: hidden;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 img {
@@ -91,6 +92,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   right: 0;
   z-index: 999;
   margin: 20px 20px 0;
+  max-width: 100%;
   transition: all 320ms ease-in-out;
 }
 
@@ -431,11 +433,27 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   line-height: 1.52857;
 }
 
+.ft-location-tag {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.ft-contact-inner-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
 .ftr-btm {
   padding: 15px 0;
   border-top: 1px solid #c2c2c2;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -456,6 +474,10 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .single-ftr-item {
     padding-left: 12px;
+    margin-top: 30px;
+  }
+  .w-md-50 {
+    width: 50% !important;
   }
   .ftr-btm {
     justify-content: space-between;
@@ -466,10 +488,16 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .single-ftr-item {
     padding-left: 80px;
   }
+  .ft-contact-inner-list {
+    flex-direction: row;
+    row-gap: 0;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+  }
 }
 @media all and (min-width: 1200px) {
   .ftr-top {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   .ftr-logo {
     width: 280px;
@@ -481,6 +509,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .single-ftr-item {
     padding-left: 0;
+    margin-top: 36px;
   }
   .ftr-item-title {
     margin-bottom: 25px;
@@ -488,35 +517,39 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .ftr-list {
     row-gap: 15px;
   }
-  .ftr-list a {
-    font-size: 14px;
-  }
   .contact-list li a {
+    font-size: 15.4px;
+  }
+  .w-xl-100 {
+    width: 100% !important;
+  }
+  .ftr-btm {
     font-size: 14px;
   }
 }
 @media all and (min-width: 1400px) {
   .ftr-top {
-    padding: 100px 0;
+    padding: 80px 0;
   }
   .ftr-logo {
     width: 300px;
   }
   .ftr-logo-area p {
     margin-bottom: 30px;
-    max-width: 82%;
+    max-width: 86%;
+    font-size: 16px;
+  }
+  .single-ftr-item {
+    margin-top: 44px;
+  }
+  .contact-list li a {
+    font-size: 16px;
   }
   .ftr-item-title {
     margin-bottom: 30px;
   }
   .ftr-list {
     row-gap: 18px;
-  }
-  .ftr-list a {
-    font-size: 15px;
-  }
-  .contact-list li a {
-    font-size: 15px;
   }
 }
 @media all and (min-width: 1700px) {
@@ -526,6 +559,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .ftr-logo-area p {
     max-width: 80%;
     font-size: 16px;
+  }
+  .single-ftr-item {
+    margin-top: 48px;
   }
   .follow-list-area {
     -moz-column-gap: 20px;
@@ -549,13 +585,8 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .contact-list li a {
     font-size: 16px;
   }
-  .contact-list li a address {
-    max-width: 90%;
-  }
-}
-@media all and (min-width: 1200px) and (max-width: 1400px) {
-  .ftr-top .row > div:nth-child(4) {
-    padding-left: 0;
+  .ftr-top .ps-xxl-4 {
+    padding-left: 80px !important;
   }
 }
 /* =======================================
@@ -1322,18 +1353,36 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   width: 100%;
 }
 
+.hm-companies-slider {
+  overflow: hidden;
+}
+.hm-companies-slider.no-animate {
+  animation: none;
+}
 .hm-companies-slider .swiper-wrapper {
-  animation: marquee 40s linear infinite;
   display: flex;
   width: -moz-max-content;
   width: max-content;
 }
-.hm-companies-slider .swiper-wrapper.duration-small {
-  animation-duration: 20s;
+.hm-companies-slider:not(.center-logos) .swiper-wrapper {
+  animation: marquee 25s linear infinite;
 }
-
+.hm-companies-slider:not(.center-logos) .swiper-wrapper.duration-small {
+  animation-duration: 12s;
+}
+.hm-companies-slider.hm-companies-reverse:not(.center-logos) .swiper-wrapper {
+  animation: marqueereverse 25s linear infinite;
+}
 .hm-companies-slider:hover .swiper-wrapper {
   animation-play-state: paused;
+}
+.hm-companies-slider.hm-companies-reverse {
+  margin-top: 10px;
+}
+
+.hm-companies-slider.center-logos .swiper-wrapper {
+  justify-content: center;
+  animation: none;
 }
 
 @keyframes marquee {
@@ -1342,6 +1391,14 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+@keyframes marqueereverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 .hm-companies-slider .swiper-slide {
@@ -1407,6 +1464,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .hm-companies-slider .swiper-slide {
     margin-right: 20px;
   }
+  .hm-companies-slider.hm-companies-reverse {
+    margin-top: 20px;
+  }
   .company-logo {
     width: 220px;
   }
@@ -1420,6 +1480,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .hm-companies-slider .swiper-slide {
     margin-right: 26px;
+  }
+  .hm-companies-slider.hm-companies-reverse {
+    margin-top: 26px;
   }
   .company-logo {
     width: 240px;
@@ -1503,6 +1566,11 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     background-position: center -360px;
     border-radius: 20px;
     height: 640px;
+  }
+  .abt-banner {
+    background-image: url(../img/abt-banner-img-pad.jpg);
+    background-position: center -10px;
+    background-size: 115%;
   }
   .breadcrumb {
     --bs-breadcrumb-font-size: 1.125rem;
@@ -2241,24 +2309,30 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   background-image: url(../img/products-banner-img-mb.jpg);
 }
 
+@media all and (min-width: 760px) {
+  .product-banner {
+    background-size: 100%;
+    background-position: 0 -700px;
+  }
+}
 @media all and (min-width: 992px) {
   .product-banner {
     background-image: url(../img/products-banner-img.jpg);
+    background-size: cover;
+    background-position: center right;
   }
-}
-@media all and (min-width: 1200px) {
   .product-banner .banner-content {
-    max-width: 46%;
+    max-width: 42%;
   }
 }
 @media all and (min-width: 1400px) {
   .product-banner .banner-content {
-    max-width: 47%;
+    max-width: 40%;
   }
 }
 @media all and (min-width: 1700px) {
   .product-banner .banner-content {
-    max-width: 45%;
+    max-width: 38%;
   }
 }
 /* ================================================
@@ -2435,19 +2509,28 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 ========================================== */
 .interiors-banner {
   background-image: url(../img/interiors-banner-img-mb.jpg);
+  padding-bottom: 450px;
 }
 
 @media all and (min-width: 767px) {
   .interiors-banner {
+    background-image: url(../img/interiors-banner-img-pad.jpg);
+    padding-bottom: 0;
     background-position: center bottom;
   }
 }
 @media all and (min-width: 992px) {
   .interiors-banner {
     background-image: url(../img/interiors-banner-img.jpg);
+    background-position: right bottom;
   }
   .interiors-banner .banner-content {
     max-width: 40%;
+  }
+}
+@media all and (min-width: 1200px) {
+  .interiors-banner {
+    background-position: center center;
   }
 }
 @media all and (min-width: 1400px) {
@@ -2465,7 +2548,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 ========================================== */
 .pd-slider .swiper-slide {
   width: auto;
-  height: 420px;
+  height: 100%;
   overflow: visible;
   transform: scale(0.56);
   transition: all 320ms ease-in-out;
@@ -2493,10 +2576,6 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .pd-slider .swiper-slide.swiper-slide-active {
   transform: scale(1);
 }
-.pd-slider .swiper-slide.swiper-slide-active .cta-container {
-  transform: scale(1);
-  opacity: 1;
-}
 .pd-slider .swiper-pd {
   position: relative;
   margin-top: 30px;
@@ -2520,8 +2599,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 
 @media all and (min-width: 760px) {
-  .pd-slider .swiper-slide {
-    height: 100%;
+  .swiper-slide.swiper-slide-active .cta-container {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 @media all and (min-width: 1200px) {
@@ -2812,17 +2892,19 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 
 @media all and (max-width: 576px) {
   .wellness-banner {
-    background-position: center -70px;
+    background-position: center -120px;
+    padding-bottom: 330px;
   }
 }
 @media all and (min-width: 767px) {
   .wellness-banner {
-    background-position: center -660px;
+    background-image: url(../img/wellness-banner-img-pad.jpg);
+    background-position: center bottom;
   }
 }
 @media all and (min-width: 992px) {
   .wellness-banner {
-    background-position: center center;
+    background-position: center right;
     background-image: url(../img/wellness-banner.jpg);
   }
   .wellness-banner .banner-content {
@@ -2853,17 +2935,28 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 
 @media all and (max-width: 576px) {
   .automotive-banner {
-    background-position: center -110px;
+    background-position: center -115px;
+    padding-bottom: 380px;
   }
 }
 @media all and (min-width: 767px) {
   .automotive-banner {
+    background-image: url(../img/automotive-banner-img-pad.jpg);
     background-position: center bottom;
   }
 }
 @media all and (min-width: 992px) {
   .automotive-banner {
+    background-position: center right;
     background-image: url(../img/automotive-banner.jpg);
+  }
+  .automotive-banner .banner-content {
+    max-width: 60%;
+  }
+}
+@media all and (min-width: 1400px) {
+  .automotive-banner .banner-content {
+    max-width: 50%;
   }
 }
 /* ================================================
@@ -2936,7 +3029,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     width: 50%;
   }
   .contact-form {
-    width: 56%;
+    width: 46%;
     margin-top: 26px;
   }
   .contact-form .single-form-item {
@@ -3175,14 +3268,23 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   color: #fff;
 }
 
+@media all and (min-width: 760px) {
+  .material-banner {
+    background-image: url(../img/material-banner-img-pad.jpg);
+    background-position: right center;
+  }
+  .material-banner .banner-title {
+    max-width: 100%;
+  }
+}
 @media all and (min-width: 992px) {
   .material-banner {
     background-image: url(../img/material-banner.jpg);
-    background-size: 200%;
-    background-position: 0 center;
+    background-size: cover;
+    background-position: center right;
   }
   .material-banner .banner-content {
-    max-width: 100%;
+    max-width: 53%;
   }
   .material-banner .banner-title {
     max-width: 68%;
@@ -3190,8 +3292,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 @media all and (min-width: 1200px) {
   .material-banner {
-    background-size: cover;
-    background-position: 0 bottom;
+    background-position: right bottom;
   }
   .material-banner .banner-content {
     max-width: 51%;
@@ -3587,6 +3688,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 
 @media all and (min-width: 760px) {
   .process-banner {
+    background-image: url(../img/process-banner-img-pad.jpg);
     background-position: center center;
   }
   .process-box-img {
@@ -3614,13 +3716,24 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 @media all and (min-width: 992px) {
   .process-banner {
     background-position: center center;
-    background-image: url(../img/process-banner.jpg);
+    background-image: url(../img/process-banner-img-lg-pad.jpg);
+  }
+  .process-banner .banner-content {
+    max-width: 60%;
   }
   .process-box-img {
     height: 460px;
   }
 }
 @media all and (min-width: 1200px) {
+  .process-banner {
+    background-image: url(../img/process-banner.jpg);
+    background-size: cover;
+    background-position: -50px center;
+  }
+  .process-banner .banner-content {
+    max-width: 50%;
+  }
   .process-main-wrapper {
     row-gap: 20px;
   }
@@ -3645,6 +3758,12 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 1400px) {
+  .process-banner {
+    background-position: right center;
+  }
+  .process-banner .banner-title {
+    max-width: 70%;
+  }
   .process-box-img {
     height: 520px;
   }
@@ -3831,7 +3950,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 
 .blog-description p {
   color: #565656;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.42857;
   margin-bottom: 0;
   box-orient: vertical;
@@ -3906,7 +4025,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     font-weight: 500;
   }
   .blog-description p {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 /* ======================================
@@ -3960,7 +4079,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   background-color: #788e72 !important;
   border: none !important;
 }
-.bpnKRL .iNyYeg {
+.bpnKRL .fxodGM {
   position: relative;
   margin-top: 15px;
 }
@@ -3977,6 +4096,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 .bpnKRL .bBKQWp {
   padding: 16px 20px !important;
   background-color: #fff !important;
+  border-color: #788e72 !important;
 }
 .bpnKRL .fTxTOY {
   line-height: 1 !important;
@@ -3996,12 +4116,13 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     -moz-column-gap: 30px;
          column-gap: 30px;
   }
-  .bpnKRL .iNyYeg {
+  .bpnKRL .fxodGM {
     min-width: 330px;
+    margin-top: 0;
   }
 }
 @media all and (min-width: 992px) {
-  .bpnKRL .iNyYeg {
+  .bpnKRL .fxodGM {
     min-width: 400px;
   }
   .bpnKRL .bBKQWp {
@@ -4010,9 +4131,6 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .bpnKRL .fFBHgs {
     top: 9px;
     right: 9px;
-  }
-  .bpnKRL .iNyYeg {
-    margin-top: 0;
   }
   .bpnKRL .hJicql {
     margin-top: 4px !important;
@@ -4029,7 +4147,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
     min-width: 50px;
     min-height: 50px;
   }
-  .bpnKRL .iNyYeg {
+  .bpnKRL .fxodGM {
     min-width: 524px;
   }
   .bpnKRL .loGnjj {
@@ -4065,7 +4183,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 1700px) {
-  .iNyYeg {
+  .fxodGM {
     min-width: 540px;
   }
 }

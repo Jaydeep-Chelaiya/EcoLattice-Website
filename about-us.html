@@ -541,6 +541,10 @@
           <div class="swiper-slide">
             <a href="https://www.levc.com/" target="_blank" class="company-logo"><img src="assets/img/levc-logo.jpg" /></a>
           </div>
+        </div>
+      </div>
+      <div class="hm-companies-slider swiper hm-companies-reverse">
+        <div class="swiper-wrapper">
           <div class="swiper-slide">
             <a href="https://www.envisagegroupltd.com/" target="_blank" class="company-logo"><img src="assets/img/enivisage-logo.jpg" /></a>
           </div>
@@ -626,7 +630,7 @@
       <div class="container">
         <div class="ftr-top">
           <div class="row">
-            <div class="col-md-6 col-xl-4">
+            <div class="col-md-6 col-lg-5 col-xl-4">
               <div class="ftr-logo-area">
                 <a class="ftr-logo" href="index.html"><img src="assets/img/ecolattice-logo-vector.svg" alt="EcoLattice Logo" /></a>
                 <p>Bring innovation to your surroundings with us. Connect to start your next project and explore how our innovative foam solutions can elevate your designs.</p>
@@ -649,7 +653,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-2">
+            <div class="col-md-3 col-lg-4 col-xl-2 pe-xl-0 pe-xxl-4">
               <div class="single-ftr-item">
                 <span class="ftr-item-title">Quick Links</span>
                 <ul class="ftr-list">
@@ -661,7 +665,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-3 col-xl-2 px-xl-0 px-xxl-4">
               <div class="single-ftr-item ps-md-0">
                 <span class="ftr-item-title">Products</span>
                 <ul class="ftr-list">
@@ -671,19 +675,39 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="single-ftr-item">
+            <div class="col-xl-4 ps-xl-0 ps-xxl-4">
+              <div class="single-ftr-item ps-md-0 pt-md-4 pt-xl-0">
                 <span class="ftr-item-title">Contact Us</span>
-                <ul class="contact-list">
-                  <li>
-                    <img src="assets/img/location-icon.svg" alt="Location Mark Icon" /><a href="https://maps.app.goo.gl/84UfDJtcjXLHnMwq6" target="_blank">
-                      <address class="mb-0">Ground floor, Shop No. GF-19, City Square, Godrej Garden City, Jagatpura, Ahmedabad, Gujarat, India - 382470.</address>
-                    </a>
-                  </li>
-                  <li><img src="assets/img/call-icon.svg" alt="Call Icon" /><a href="tel:+44 78837 51381">+44 78837 51381</a></li>
-                  <li><img src="assets/img/call-icon.svg" alt="Call Icon" /><a href="tel:+91 82380 02122">+91 82380 02122</a></li>
-                  <li><img src="assets/img/mail-icon.svg" alt="Mail Icon" /><a href="mailto:yash@ecolattice.uk">yash@ecolattice.uk</a></li>
-                </ul>
+                <div class="d-md-flex flex-xl-column gap-md-5 gap-xl-4">
+                  <ul class="contact-list w-md-50 w-xl-100">
+                    <li>
+                      <img src="assets/img/location-icon.svg" alt="Location Mark Icon" /><a href="https://maps.app.goo.gl/XY3Sro6HAL9CVXJ38" target="_blank">
+                        <span class="ft-location-tag">UK</span>
+                        <address class="mb-0">133, One Eighty Stratford, London, <br class="d-none d-xxl-block" />United Kingdom - E15 2FE.</address>
+                      </a>
+                    </li>
+                    <li>
+                      <ul class="ft-contact-inner-list">
+                        <li><img src="assets/img/call-icon.svg" alt="Call Icon" /><a href="tel:+44 78837 51381" class="text-nowrap">+44 78837 51381</a></li>
+                        <li><img src="assets/img/mail-icon.svg" alt="Mail Icon" /><a href="mailto:yash@ecolattice.uk" class="text-nowrap">yash@ecolattice.uk</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="contact-list w-md-50 w-xl-100 mt-4 mt-md-0 mt-xxl-3">
+                    <li>
+                      <img src="assets/img/location-icon.svg" alt="Location Mark Icon" /><a href="https://maps.app.goo.gl/RZoQdp5kFBTUbH3h6" target="_blank">
+                        <span class="ft-location-tag">India</span>
+                        <address class="mb-0">GF-19, City Square, Godrej Garden City, Jagatpura, Ahmedabad, Gujarat- 382470.</address>
+                      </a>
+                    </li>
+                    <li>
+                      <ul class="ft-contact-inner-list">
+                        <li><img src="assets/img/call-icon.svg" alt="Call Icon" /><a href="tel:+91 82380 02122" class="text-nowrap">+91 82380 02122</a></li>
+                        <li><img src="assets/img/mail-icon.svg" alt="Mail Icon" /><a href="mailto:yash@ecolattice.uk" class="text-nowrap">yash@ecolattice.uk</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -707,19 +731,33 @@
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>
     <script>
-      // Duplicate slides for seamless continuous animation
-      const swiper1Wrapper = document.querySelector(".hm-companies-slider .swiper-wrapper");
-      const swiper1Slides = Array.from(swiper1Wrapper.children);
-      swiper1Slides.forEach((slide) => {
-        swiper1Wrapper.appendChild(slide.cloneNode(true));
-      });
-      // Initialize Swiper for proper sizing/layout
-      new Swiper(".hm-companies-slider", {
-        slidesPerView: "auto",
-        freeMode: true,
-        freeModeMomentum: false,
-        allowTouchMove: false,
-      });
+      function initCompanySliders() {
+        // Only run marquee logic if screen >= 1200px
+        if (window.innerWidth < 1200) return;
+        document.querySelectorAll(".hm-companies-slider").forEach((sliderEl) => {
+          const wrapper = sliderEl.querySelector(".swiper-wrapper");
+          const slides = Array.from(wrapper.children);
+
+          // Check if wrapper width > viewport (only animate if overflow exists)
+          const wrapperWidth = wrapper.scrollWidth;
+          const viewportWidth = sliderEl.offsetWidth;
+
+          if (wrapperWidth > viewportWidth) {
+            // Duplicate once for seamless loop
+            if (!sliderEl.classList.contains("duplicated")) {
+              slides.forEach((slide) => {
+                wrapper.appendChild(slide.cloneNode(true));
+              });
+              sliderEl.classList.add("duplicated");
+            }
+          } else {
+            // If not overflowing, center logos instead
+            sliderEl.classList.add("center-logos");
+          }
+        });
+      }
+      window.addEventListener("load", initCompanySliders);
+      window.addEventListener("resize", initCompanySliders);
     </script>
     <script>
       const isDesktop = window.innerWidth > 767;
