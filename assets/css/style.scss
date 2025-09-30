@@ -4100,6 +4100,8 @@ html[data-scroll-orientation="horizontal"] {
   position: relative;
   img {
     border-radius: $border-radius;
+    height: 220px;
+    object-fit: cover;
   }
 }
 .tag-wrapper {
@@ -4153,6 +4155,16 @@ html[data-scroll-orientation="horizontal"] {
   .single-blog {
     width: calc((100% / 2) - 10px);
   }
+  .blog-img {
+    img {
+      height: 260px;
+    }
+  }
+}
+@include mediaQuery(min, 992px) {
+  .single-blog {
+    width: calc((100% / 3) - 13.5px);
+  }
 }
 @include mediaQuery(min, 1200px) {
   .hm-blog-sec {
@@ -4161,13 +4173,11 @@ html[data-scroll-orientation="horizontal"] {
       margin-bottom: $spacing-xxl;
     }
   }
-  .single-blog {
-    width: calc((100% / 3) - 13.5px);
-  }
   .blog-img {
     position: relative;
     img {
       border-radius: $border-radius-lg;
+      height: 290px;
     }
   }
   .blog-description {
