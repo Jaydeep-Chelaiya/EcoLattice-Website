@@ -156,33 +156,39 @@ html[data-scroll-orientation="horizontal"] {
 }
 .animated {
   will-change: transform;
-  transition: transform 700ms linear;
-  &.swingInX {
-    animation: swingInX 700ms both;
-    transform-origin: top;
+  transition: transform 500ms linear;
+  // &.swingInX {
+  //   animation: swingInX 700ms both;
+  //   transform-origin: top;
+  // }
+  // &.swingOutX {
+  //   animation: swingOutX 700ms both;
+  //   backface-visibility: visible !important;
+  //   transform-origin: top;
+  // }
+  &.headroom--pinned {
+    transform: translateY(0%);
   }
-  &.swingOutX {
-    animation: swingOutX 700ms both;
-    backface-visibility: visible !important;
-    transform-origin: top;
-  }
-}
-@keyframes swingInX {
-  0% {
-    transform: perspective(1000px) rotateX(-90deg);
-  }
-  100% {
-    transform: perspective(1000px) rotateX(0deg);
+  &.headroom--unpinned {
+    transform: translateY(calc(-100% - 35px));
   }
 }
-@keyframes swingOutX {
-  0% {
-    transform: perspective(1000px) rotateX(0deg);
-  }
-  100% {
-    transform: perspective(1000px) rotateX(-90deg);
-  }
-}
+// @keyframes swingInX {
+//   0% {
+//     transform: perspective(1000px) rotateX(-90deg);
+//   }
+//   100% {
+//     transform: perspective(1000px) rotateX(0deg);
+//   }
+// }
+// @keyframes swingOutX {
+//   0% {
+//     transform: perspective(1000px) rotateX(0deg);
+//   }
+//   100% {
+//     transform: perspective(1000px) rotateX(-90deg);
+//   }
+// }
 .navbar {
   border-radius: 30px;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
@@ -4236,96 +4242,104 @@ html[data-scroll-orientation="horizontal"] {
   padding: $spacing-lg 0;
   .cta-arrow {
     display: block;
-    min-width: 42px;
-    min-height: 42px;
+    min-width: 40px;
+    min-height: 40px;
+    img {
+      height: 40px;
+    }
   }
 }
-.bpnKRL {
-  .kQbqYI {
-    color: $white-color !important;
+.eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root {
+  [class*="Footer__WidgetFooter-sc"] {
+    display: none;
   }
-  .hJicql {
-    font-size: $font-size-md !important;
-    line-height: $line-height !important;
-    color: $white-color !important;
+  [class*="WidgetTitle__Caption-sc"] {
     font-family: $primary-font-family !important;
-    span {
+    div {
       display: block !important;
       width: 100% !important;
       text-wrap: unset !important;
     }
   }
-  .ButtonBase__Ellipsis-sc-p43e7i-5.dqiKFy {
+  .es-button-base-ellipsis {
     display: none;
   }
-  .jhGZeV {
+  .es-button-base-overlay {
     padding: 0 !important;
     border-radius: 100% !important;
   }
-  .ejNxVE {
+  .es-button-base-container {
     border-radius: 100% !important;
     line-height: 1 !important;
     height: unset !important;
     background-color: #788e72 !important;
     border: none !important;
   }
-  .fxodGM {
+  [class*="FormLayout__Container-sc"] {
     position: relative;
     margin-top: $spacing-sm;
   }
-  .dQhwzk {
+  [class*="HorizontalLayout__Grid-sc"] {
     display: block !important;
   }
-  .fFBHgs {
+  [class*="HorizontalLayout__Buttons-sc"] {
     display: inline-block !important;
     position: absolute !important;
-    top: 5px;
+    top: 6px;
     right: 6px;
     z-index: 999;
   }
-  .bBKQWp {
+  .es-fields-short-text {
     padding: 16px 20px !important;
     background-color: $white-color !important;
     border-color: $secondary-color !important;
   }
-  .fTxTOY {
+  [class*="TextControlBase__TextControlBaseInput-sc"] {
     line-height: 1 !important;
   }
-  .jOfTqZ {
-    margin-top: 0 !important;
-  }
-  .jBRFcC {
+  [class*="FormLayout__ErrorsGroup-sc"] {
     display: none !important;
+  }
+  [class*="FormFieldLayout__Error-sc"] {
+    padding-top: 3px;
+    padding-left: 20px;
   }
 }
 @include mediaQuery(min, 760px) {
-  .bpnKRL {
-    .loGnjj {
+  .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
+    width: 100%;
+  }
+  .eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root {
+    [class*="WidgetTitle__Header-sc"] {
+      font-size: $font-size-xxl + 2 !important;
+    }
+    [class*="Content__FormContainer-sc"] {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       column-gap: 30px;
     }
-    .fxodGM {
+    [class*="FormLayout__Container-sc"] {
       min-width: 330px;
       margin-top: 0;
     }
   }
 }
 @include mediaQuery(min, 992px) {
-  .bpnKRL {
-    .fxodGM {
+  .eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root {
+    [class*="FormLayout__Container-sc"] {
       min-width: 400px;
     }
-    .bBKQWp {
+    .es-fields-short-text {
       padding: 20px 25px !important;
     }
-    .fFBHgs {
-      top: 9px;
-      right: 9px;
+    [class*="HorizontalLayout__Buttons-sc"] {
+      top: 10px;
+      right: 10px;
     }
-    .hJicql {
-      margin-top: 4px !important;
+    [class*="FormFieldLayout__Error-sc"] {
+      padding-top: 5px;
+      padding-left: 25px;
     }
   }
 }
@@ -4338,96 +4352,55 @@ html[data-scroll-orientation="horizontal"] {
     .cta-arrow {
       min-width: 50px;
       min-height: 50px;
+      img {
+        height: 50px;
+      }
     }
   }
-  .bpnKRL {
-    .fxodGM {
+  .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
+    width: 100%;
+  }
+  .eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root {
+    [class*="FormLayout__Container-sc"] {
       min-width: 524px;
     }
-    .loGnjj {
+    [class*="Content__FormContainer-sc"] {
       margin: auto;
-      align-items: flex-start;
       justify-content: space-between;
     }
-    .bBKQWp {
+    [class*="TextControlBase__TextControlBaseContainer-sc"] {
       font-size: $font-size-lg !important;
       font-weight: 700 !important;
       padding: 22px 40px !important;
+      border-radius: 40px !important;
       // border-color: transparent !important;
       &::placeholder {
         font-weight: 700;
       }
     }
-    .fFBHgs {
+    [class*="FormFieldLayout__Error-sc"] {
+      padding-left: 40px;
+      font-size: $font-size-md !important;
+    }
+    [class*="HorizontalLayout__Buttons-sc"] {
       top: 8px;
-      right: 10px;
-    }
-    .kQbqYI {
-      font-size: $title-sm !important;
-    }
-    .hJicql {
-      font-size: $font-size-lg !important;
+      right: 8px;
     }
   }
 }
 @include mediaQuery(min, 1400px) {
-  .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
-    width: 100%;
+  .eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root {
+    [class*="WidgetTitle__Header-sc"] {
+      font-size: $title-md !important;
+    }
+    [class*="WidgetTitle__Caption-sc"] {
+      font-size: $font-size-lg !important;
+    }
   }
 }
 @include mediaQuery(min, 1700px) {
-  .fxodGM {
+  [class*="FormLayout__Container-sc"] {
     min-width: 540px;
   }
 }
 // Success Message
-.bpnKRL {
-  .cdHfQv {
-    font-family: $primary-font-family !important;
-    font-size: $font-size-md !important;
-    line-height: $line-height !important;
-    font-weight: 500;
-  }
-  .kWdIQJ {
-    display: block !important;
-  }
-  .SubmitMessage__Container-sc-n9b9ya-0.kWdIQJ {
-    .ButtonBase__ButtonContainer-sc-p43e7i-3.euBiGU {
-      background-color: $secondary-color !important;
-      color: $white-color !important;
-      margin-top: $spacing-sm !important;
-    }
-    .jhGZeV {
-      padding: 8px 20px !important;
-    }
-    .ButtonBase__Ellipsis-sc-p43e7i-5.dqiKFy {
-      display: inline-block;
-    }
-    .SubmitMessage__Text-sc-n9b9ya-3.cdHfQv {
-      max-width: 86%;
-    }
-  }
-}
-@include mediaQuery(min, 992px) {
-  .bpnKRL {
-    .SubmitMessage__Container-sc-n9b9ya-0.kWdIQJ {
-      display: flex !important;
-      min-width: 600px;
-      .ButtonBase__ButtonContainer-sc-p43e7i-3.euBiGU {
-        margin-top: 0 !important;
-      }
-      .jhGZeV {
-        padding: 12px 36px 10px 26px !important;
-      }
-      .SubmitMessage__Text-sc-n9b9ya-3.cdHfQv {
-        max-width: 100%;
-      }
-      .SubmitMessage__Message-sc-n9b9ya-1.dXVVdF {
-        gap: 2px !important;
-      }
-      .ButtonBase__Overlay-sc-p43e7i-4.jhGZeV {
-        background-color: $secondary-color !important;
-      }
-    }
-  }
-}

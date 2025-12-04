@@ -24,8 +24,8 @@
     tolerance: 3,
     classes: {
       initial: "animated",
-      pinned: "swingInX",
-      unpinned: "swingOutX",
+      pinned: "headroom--pinned",
+      unpinned: "headroom--unpinned",
     },
   });
   headroom.init();
