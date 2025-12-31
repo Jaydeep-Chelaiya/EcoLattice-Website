@@ -50,11 +50,32 @@
               <li class="nav-item dropdown">
                 <a class="nav-link active" href="index.html" id="productLink">Products</a>
                 <span class="dropdown-toggle-icon" role="button" aria-expanded="false" id="dropdownIcon"></span>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="interiors.html">Interiors</a></li>
-                  <li><a class="dropdown-item" href="wellness.html">Wellness</a></li>
-                  <li><a class="dropdown-item" href="automotive.html">Automotive</a></li>
-                </ul>
+                <div class="dropdown-wrapper">
+                  <ul class="dropdown-list-wrapper">
+                    <li>
+                      <a class="dropdown-item" href="interiors.html">Interiors</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="wellness.html">Wellness</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="automotive.html">Automotive</a>
+                    </li>
+                  </ul>
+                  <div class="menu-posters-wrapper">
+                    <ul class="posters" id="posters">
+                      <li class="single-poster-item active">
+                        <img src="../assets/img/menu-interior.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="../assets/img/menu-wellness.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="../assets/img/menu-automotive.jpg" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../materials.html">Materials</a>
@@ -432,29 +453,33 @@
     <script src="../assets/js/custom.js"></script>
     <script>
       function initCompanySliders() {
-        // Only run marquee logic if screen >= 1200px
-        if (window.innerWidth < 1200) return;
+        // if (window.innerWidth < 1200) return;
         document.querySelectorAll(".hm-companies-slider").forEach((sliderEl) => {
+          // Only run if not already duplicated
+          if (sliderEl.classList.contains("duplicated")) return;
           const wrapper = sliderEl.querySelector(".swiper-wrapper");
           const slides = Array.from(wrapper.children);
-          // Check if wrapper width > viewport (only animate if overflow exists)
-          const wrapperWidth = wrapper.scrollWidth;
           const viewportWidth = sliderEl.offsetWidth;
+          const wrapperWidth = wrapper.scrollWidth;
           if (wrapperWidth > viewportWidth) {
-            // Duplicate once for seamless loop
-            if (!sliderEl.classList.contains("duplicated")) {
-              slides.forEach((slide) => {
-                wrapper.appendChild(slide.cloneNode(true));
-              });
-              sliderEl.classList.add("duplicated");
-            }
+            // Clone the slides
+            slides.forEach((slide) => {
+              wrapper.appendChild(slide.cloneNode(true));
+            });
+            // Adding this class now triggers the CSS animation
+            // on the newly doubled width simultaneously.
+            sliderEl.classList.add("duplicated");
           } else {
-            // If not overflowing, center logos instead
             sliderEl.classList.add("center-logos");
           }
         });
       }
-      window.addEventListener("load", initCompanySliders);
+      // Use DOMContentLoaded for a faster trigger than 'load'
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCompanySliders);
+      } else {
+        initCompanySliders();
+      }
       window.addEventListener("resize", initCompanySliders);
     </script>
     <!-- <script>

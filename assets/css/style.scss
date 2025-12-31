@@ -263,9 +263,20 @@ html[data-scroll-orientation="horizontal"] {
 .navbar-collapse {
   padding: 15px 0 0 0;
 }
-.navbar-expand-lg .navbar-nav .dropdown-menu {
+.menu-posters-wrapper {
+  display: none;
+}
+.dropdown-wrapper {
+  position: static;
+  display: none;
   padding: 10px;
   border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  opacity: 1;
+  background: $white-color;
+  &.show {
+    display: block;
+  }
 }
 .dropdown-item {
   padding: 11px 15px 10px 15px;
@@ -320,13 +331,10 @@ html[data-scroll-orientation="horizontal"] {
     padding: 14px 0;
     margin: 0;
   }
-  .nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-  }
   .dropdown-toggle-icon {
     display: none;
   }
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
+  .dropdown-wrapper {
     top: 78px;
     left: 8px;
     padding: 10px;
@@ -334,11 +342,93 @@ html[data-scroll-orientation="horizontal"] {
     min-width: 180px;
   }
   .dropdown-item {
-    padding: 10px 15px;
+    padding: 12px 12px 12px 22px;
     font-size: 16px;
   }
   .navbar-collapse {
     padding: 0;
+  }
+  .dropdown-wrapper {
+    position: absolute;
+    border-radius: 20px;
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    box-shadow: 0px 0px 34px rgb(122 122 122 / 22%);
+    background: linear-gradient(111deg, rgba(255, 255, 255, 0.9) 17.44%, rgba(255, 255, 255, 0.9) 103.95%);
+    backdrop-filter: blur(20px);
+    column-gap: $spacing-md;
+    display: flex;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: $transition;
+    pointer-events: none;
+  }
+  .nav-item.dropdown:hover .dropdown-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .dropdown-list-wrapper {
+    @include flex(self-start, center);
+    flex-direction: column;
+    min-width: 220px;
+    li {
+      width: 100%;
+      // &:not(:last-of-type) {
+      //   border-bottom: 1px solid #d9d9d9;
+      // }
+      a {
+        @include flex(center, space-between);
+        border-radius: 30px;
+        line-height: 1;
+        &::after {
+          content: "";
+          width: 30px;
+          height: 30px;
+          min-width: 30px;
+          min-height: 30px;
+          background-image: url(../img/accordian-arrow.svg);
+          background-repeat: no-repeat;
+          background-size: contain;
+          transition: transform 0.3s ease;
+          transform: rotate(0deg);
+          display: inline-flex;
+        }
+        &:hover {
+          &::after {
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+  .menu-posters-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 188px;
+    min-width: 308px;
+  }
+  .posters {
+    height: 100%;
+    width: 100%;
+    .single-poster-item {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: $transition;
+      img {
+        border: 6px solid #b2c1b1;
+        border-radius: 16px;
+        object-fit: cover;
+      }
+      &.active {
+        opacity: 1;
+      }
+    }
   }
 }
 @include mediaQuery(min, 1200px) {
@@ -352,6 +442,16 @@ html[data-scroll-orientation="horizontal"] {
   }
   .nav-item {
     padding: 13.6px 0;
+  }
+  .dropdown-item {
+    padding: 15px 15px 15px 25px;
+  }
+  .dropdown-list-wrapper {
+    min-width: 210px;
+  }
+  .menu-posters-wrapper {
+    min-width: 320px;
+    height: 200px;
   }
 }
 @include mediaQuery(min, 1400px) {
@@ -379,8 +479,8 @@ html[data-scroll-orientation="horizontal"] {
   .nav-item {
     padding: 18px 0;
   }
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
-    top: 92px;
+  .navbar-expand-lg .navbar-nav .dropdown-wrapper {
+    top: 92.5px;
   }
   .dropdown-item {
     font-size: $font-size-lg;
@@ -765,7 +865,7 @@ html[data-scroll-orientation="horizontal"] {
     position: absolute;
     top: -20px;
     right: 0;
-    transform: rotate(180deg) scale(1.02);
+    transform: rotate(180deg);
     &:last-of-type {
       top: auto;
       bottom: 0;
@@ -869,10 +969,10 @@ html[data-scroll-orientation="horizontal"] {
       padding: 8px 0 0 8px;
       & > svg {
         width: 18px;
-        top: -16px;
+        top: -18px;
         &:last-of-type {
           top: auto;
-          left: -16px;
+          left: -18px;
         }
       }
     }
@@ -1422,6 +1522,7 @@ html[data-scroll-orientation="horizontal"] {
     .swiper-wrapper {
       animation: none;
       width: 100%;
+      will-change: transform;
     }
   }
 }
@@ -1434,20 +1535,23 @@ html[data-scroll-orientation="horizontal"] {
     display: flex;
     width: max-content;
   }
-  &:not(.center-logos) .swiper-wrapper {
+  &.duplicated:not(.center-logos) .swiper-wrapper {
     animation: marquee 25s linear infinite;
     &.duration-small {
       animation-duration: 12s;
     }
   }
-  &.hm-companies-reverse:not(.center-logos) .swiper-wrapper {
+  &.hm-companies-reverse.duplicated:not(.center-logos) .swiper-wrapper {
     animation: marqueereverse 25s linear infinite;
   }
-  &:hover .swiper-wrapper {
+  &.duplicated:hover .swiper-wrapper {
     animation-play-state: paused;
   }
   &.hm-companies-reverse {
     margin-top: 10px;
+    &.duplicated:hover .swiper-wrapper {
+      animation-play-state: paused;
+    }
   }
 }
 .hm-companies-slider.center-logos .swiper-wrapper {
@@ -1475,10 +1579,14 @@ html[data-scroll-orientation="horizontal"] {
   overflow: hidden;
   border-radius: $border-radius;
   margin-right: 10px;
+  flex-shrink: 0;
 }
 .company-logo {
   display: block;
   width: 180px;
+  img {
+    object-fit: contain;
+  }
 }
 .hm-client-area {
   @include flex(flex-start, center);
@@ -1493,6 +1601,14 @@ html[data-scroll-orientation="horizontal"] {
   }
   img {
     border-radius: $border-radius;
+  }
+}
+@include mediaQuery(max, 992px) {
+  .no-animate-large:not(.center-logos) .swiper-wrapper {
+    animation: marquee 25s linear infinite;
+    &:hover {
+      animation-play-state: paused;
+    }
   }
 }
 @include mediaQuery(min, 760px) {
@@ -2561,6 +2677,7 @@ html[data-scroll-orientation="horizontal"] {
 .p-video-container {
   position: relative;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
   #processVideo {
     width: 100%;
     height: 100%;
@@ -3534,11 +3651,6 @@ html[data-scroll-orientation="horizontal"] {
     .p-video-container {
       margin-top: $spacing-md;
     }
-    .button-arrow-container > {
-      svg:last-of-type {
-        bottom: 6px;
-      }
-    }
   }
 }
 @include mediaQuery(min, 1200px) {
@@ -3595,6 +3707,7 @@ html[data-scroll-orientation="horizontal"] {
     position: relative;
     z-index: 1;
     color: $black-color;
+    border-color: transparent;
     .accordion-header {
       font-family: $secondary-font-family;
       position: relative;
@@ -3620,6 +3733,14 @@ html[data-scroll-orientation="horizontal"] {
       }
       &.active::after {
         transform: rotate(90deg);
+      }
+    }
+    &.accordion-item-dark {
+      .accordion-header {
+        &::after {
+          content: "";
+          background-image: url(../img/accordian-arrow-light.svg);
+        }
       }
     }
     .accordion-content {
@@ -3774,8 +3895,8 @@ html[data-scroll-orientation="horizontal"] {
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   transition: $transition;
   &.swiper-button-disabled {
     opacity: 0;
@@ -3898,6 +4019,11 @@ html[data-scroll-orientation="horizontal"] {
   .process-box-img {
     height: 460px;
   }
+  .custom-button-prev,
+  .custom-button-next {
+    height: 50px;
+    width: 50px;
+  }
 }
 @include mediaQuery(min, 1200px) {
   .process-banner {
@@ -3920,11 +4046,6 @@ html[data-scroll-orientation="horizontal"] {
     .process-box-single-img {
       border-radius: $border-radius-lg;
     }
-  }
-  .custom-button-prev,
-  .custom-button-next {
-    height: 40px;
-    width: 40px;
   }
   .process-content-wrapper {
     border-radius: $border-radius-lg;
@@ -4404,3 +4525,143 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 // Success Message
+
+/* =========================================
+===== Sample Request Modal Area Styles =====
+========================================= */
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.65;
+}
+.samplepopup {
+  --bs-modal-width: 1000px;
+  --bs-border-width: 0;
+  .modal-content {
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  .modal-body {
+    background: #f2f2f2;
+
+    padding: 0;
+  }
+}
+.btn-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #71886b;
+  border-radius: 100%;
+  z-index: 99999;
+  opacity: 1;
+  height: 44px;
+  width: 44px;
+  max-width: 44px;
+  max-height: 44px;
+  @include flex(center, center);
+  padding: 0;
+  img {
+    width: 16px;
+    height: 16px;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(80, 92, 76, 1);
+  }
+}
+.popup-left-area {
+  padding: $spacing-lg;
+}
+.popup-title {
+  font-size: $title-lg;
+  font-weight: 600;
+  font-family: $secondary-font-family;
+  margin-bottom: $spacing-xs;
+  color: #465243;
+}
+.popup-description {
+  font-size: $font-size-xl;
+  line-height: 1.35;
+  font-weight: 300;
+  margin-bottom: 0;
+  color: #000000;
+}
+.popup-cta {
+  background-color: #505c4d;
+  min-width: 210px;
+  justify-content: space-between;
+  .cta-arrow {
+    height: 40px;
+    width: 40px;
+  }
+  &.bkgd-cta span {
+    color: $white-color;
+  }
+}
+.popup-right-area {
+  background-color: #60715b;
+  padding: 50px 30px 30px 30px;
+}
+@include mediaQuery(min, 760px) {
+  .samplepopup {
+    --bs-modal-width: 680px;
+  }
+  .popup-left-area {
+    padding-right: 0;
+  }
+}
+@include mediaQuery(min, 992px) {
+  .samplepopup {
+    --bs-modal-width: 800px;
+  }
+  .popup-left-area {
+    padding-left: 40px;
+  }
+  .popup-title {
+    font-size: $title-xxl;
+  }
+  .popup-description {
+    font-size: $font-size-xxl;
+  }
+  .popup-right-area {
+    padding: 60px;
+  }
+}
+@include mediaQuery(min, 1200px) {
+  .samplepopup {
+    --bs-modal-width: 1000px;
+    .modal-content {
+      border-radius: 30px;
+    }
+  }
+  .btn-close {
+    right: 15px;
+    top: 15px;
+    height: 50px;
+    width: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .popup-left-area {
+    padding-left: 60px;
+  }
+  .popup-title {
+    font-size: 50px;
+    margin-bottom: $spacing-md + 5;
+  }
+  .popup-description {
+    font-size: $title-xs;
+  }
+  .popup-cta {
+    min-width: 240px;
+    padding: 13px 13px 13px 30px;
+    border-radius: 45px;
+    font-size: $font-size-xl;
+  }
+  .popup-right-area {
+    padding: 80px;
+  }
+}

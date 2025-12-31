@@ -48,11 +48,32 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="products/" id="productLink">Products</a>
                 <span class="dropdown-toggle-icon" role="button" aria-expanded="false" id="dropdownIcon"></span>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="products/interiors.html">Interiors</a></li>
-                  <li><a class="dropdown-item" href="products/wellness.html">Wellness</a></li>
-                  <li><a class="dropdown-item" href="products/automotive.html">Automotive</a></li>
-                </ul>
+                <div class="dropdown-wrapper">
+                  <ul class="dropdown-list-wrapper">
+                    <li>
+                      <a class="dropdown-item" href="products/interiors.html">Interiors</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="products/wellness.html">Wellness</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="products/automotive.html">Automotive</a>
+                    </li>
+                  </ul>
+                  <div class="menu-posters-wrapper">
+                    <ul class="posters" id="posters">
+                      <li class="single-poster-item active">
+                        <img src="assets/img/menu-interior.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="assets/img/menu-wellness.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="assets/img/menu-automotive.jpg" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="materials.html">Materials</a>
@@ -127,7 +148,7 @@
               <div class="cta-container">
                 <div class="button-arrow-container">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#FFFFFF"></path></svg>
-                  <div class="button-arrow" style="background-color: #6f8d69"></div>
+                  <div class="button-arrow" style="background-color: #6f8d69; border: none"></div>
                   <!-- style="background: #91ac89; border-color: #91ac89" -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#FFFFFF"></path></svg>
                 </div>
@@ -190,11 +211,11 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item" style="background-color: #6f8d69">
-            <div class="accordion-header">Customised Lattice</div>
+          <div class="accordion-item accordion-item-dark" style="background-color: #93af92">
+            <div class="accordion-header" style="color: #3e3e3e">Customised Lattice</div>
             <div class="accordion-content">
               <div class="accordion-main-content">
-                <p class="sec-description">Given our additive production methods for the material, our lattices are endlessly customisable, creating new possibilities for inclusive design. We convert pressure point data into designs by adjusting the foams' shore hardness and optimising the lattice structure.</p>
+                <p class="sec-description" style="color: #3e3e3e">Given our additive production methods for the material, our lattices are endlessly customisable, creating new possibilities for inclusive design. We convert pressure point data into designs by adjusting the foams' shore hardness and optimising the lattice structure.</p>
                 <a href="https://forms.gle/FNAAEsFs3AmQ3Gzs6" target="_blank" class="sec-cta text-dark">
                   <span class="fw-bold">Get A Sample</span>
                   <span class="cta-arrow"><img src="assets/img/accordian-arrow-light.svg" alt="Navigation Arrow" /></span>
@@ -579,6 +600,14 @@
       if (firstOpen) {
         firstOpen.style.maxHeight = firstOpen.scrollHeight + "px";
       }
+      document.querySelectorAll(".accordion-content img").forEach((img) => {
+        img.addEventListener("load", () => {
+          const parent = img.closest(".accordion-content");
+          if (parent.classList.contains("open")) {
+            parent.style.maxHeight = parent.scrollHeight + "px";
+          }
+        });
+      });
     </script>
   </body>
 </html>

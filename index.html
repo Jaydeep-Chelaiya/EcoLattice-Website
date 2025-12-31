@@ -27,6 +27,8 @@
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
     <!-- Bootstrap Stylesheet -->
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
     <!-- Swiper Slider Stylesheet -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- Custom Stylesheet -->
@@ -50,11 +52,32 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="products/" id="productLink">Products</a>
                 <span class="dropdown-toggle-icon" role="button" aria-expanded="false" id="dropdownIcon"></span>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="products/interiors.html">Interiors</a></li>
-                  <li><a class="dropdown-item" href="products/wellness.html">Wellness</a></li>
-                  <li><a class="dropdown-item" href="products/automotive.html">Automotive</a></li>
-                </ul>
+                <div class="dropdown-wrapper">
+                  <ul class="dropdown-list-wrapper">
+                    <li>
+                      <a class="dropdown-item" href="products/interiors.html">Interiors</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="products/wellness.html">Wellness</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="products/automotive.html">Automotive</a>
+                    </li>
+                  </ul>
+                  <div class="menu-posters-wrapper">
+                    <ul class="posters" id="posters">
+                      <li class="single-poster-item active">
+                        <img src="assets/img/menu-interior.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="assets/img/menu-wellness.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="assets/img/menu-automotive.jpg" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="materials.html">Materials</a>
@@ -303,7 +326,7 @@
             <div class="col-md-6">
               <div class="hm-product-item">
                 <img src="assets/img/evoque.png" alt="Ecolattice at home" />
-                <a href="#" class="hm-product-overlay">Evoque</a>
+                <a href="https://ecolattice.shop/products/evoque" target="EcoLattice" class="hm-product-overlay">Evoque</a>
               </div>
             </div>
             <div class="col-md-6">
@@ -311,13 +334,13 @@
                 <div class="col-6">
                   <div class="hm-product-item">
                     <img src="assets/img/corpus-forma.png" alt="Ecolattice at home" />
-                    <a href="#" class="hm-product-overlay">Corpus Forma</a>
+                    <a href="https://ecolattice.shop/products/corpusforma" target="EcoLattice" class="hm-product-overlay">Corpus Forma</a>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="hm-product-item">
                     <img src="assets/img/cumulus.png" alt="Ecolattice at home" />
-                    <a href="#" class="hm-product-overlay">Cumulus</a>
+                    <a href="https://ecolattice.shop/products/cumulus" target="EcoLattice" class="hm-product-overlay">Cumulus</a>
                   </div>
                 </div>
               </div>
@@ -325,7 +348,7 @@
                 <div class="col-12 flex-spacing">
                   <div class="hm-product-item">
                     <img src="assets/img/spin-tool.png" alt="Ecolattice at home" />
-                    <a href="#" class="hm-product-overlay">Spin Stool</a>
+                    <a href="https://ecolattice.shop/products/spin-stool" target="EcoLattice" class="hm-product-overlay">Spin Stool</a>
                   </div>
                 </div>
               </div>
@@ -335,19 +358,19 @@
                 <div class="col-6">
                   <div class="hm-product-item">
                     <img src="assets/img/hoop.png" alt="Ecolattice at home" />
-                    <a href="#" class="hm-product-overlay">Hoop</a>
+                    <a href="https://ecolattice.shop/products/hoop" target="EcoLattice" class="hm-product-overlay">Hoop</a>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="hm-product-item">
                     <img src="assets/img/duo.png" alt="Ecolattice at home" />
-                    <a href="#" class="hm-product-overlay">Duo</a>
+                    <a href="https://ecolattice.shop/products/duo" target="EcoLattice" class="hm-product-overlay">Duo</a>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="hm-product-item">
                     <img src="assets/img/eco-fidget.png" alt="Ecolattice at home" />
-                    <a href="#" class="hm-product-overlay">Eco Fidget</a>
+                    <a href="https://ecolattice.shop/products/ecofidget" target="EcoLattice" class="hm-product-overlay">Eco Fidget</a>
                   </div>
                 </div>
                 <div class="col-6">
@@ -361,7 +384,7 @@
             <div class="col-md-6">
               <div class="hm-product-item">
                 <img src="assets/img/rising-clouds.png" alt="Ecolattice at home" />
-                <a href="#" class="hm-product-overlay">Rising Clouds</a>
+                <a href="https://ecolattice.shop/products/rising-clouds" target="EcoLattice" class="hm-product-overlay">Rising Clouds</a>
               </div>
             </div>
           </div>
@@ -656,6 +679,35 @@
     </footer>
     <!-- Footer Area Ends -->
 
+    <!-- Sample Request Modal Area Starts -->
+    <div class="modal fade samplepopup" id="samplePopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="popup-close"><img src="assets/img/close-arrow.svg" alt="Close Icon" /></button>
+          <div class="modal-body">
+            <div class="row align-items-md-center">
+              <div class="col-md-6 order-2 order-md-1">
+                <div class="popup-left-area">
+                  <h6 class="popup-title">Get a Sample?</h6>
+                  <p class="popup-description">Experience the quality of our materials firsthand by requesting a high-quality sample of our lattice.</p>
+                  <a href="https://forms.gle/FNAAEsFs3AmQ3Gzs6" target="_blank" class="sec-cta text-dark bkgd-cta mt-4 mt-xl-5 popup-cta">
+                    <span>Get a sample</span>
+                    <span class="cta-arrow"><img src="assets/img/accordian-arrow.svg" alt="Navigation Arrow" /></span>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 order-1 order-md-2">
+                <div class="popup-right-area">
+                  <img src="assets/img/popup-img.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sample Request Modal Area Ends -->
+
     <!-- Required JS -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/locomotive-scroll.js"></script>
@@ -666,33 +718,65 @@
     <script src="assets/js/custom.js"></script>
     <script>
       function initCompanySliders() {
-        // Only run marquee logic if screen >= 1200px
-        if (window.innerWidth < 1200) return;
-
         document.querySelectorAll(".hm-companies-slider").forEach((sliderEl) => {
+          // Only run if not already duplicated
+          if (sliderEl.classList.contains("duplicated")) return;
           const wrapper = sliderEl.querySelector(".swiper-wrapper");
           const slides = Array.from(wrapper.children);
-
-          // Check if wrapper width > viewport (only animate if overflow exists)
-          const wrapperWidth = wrapper.scrollWidth;
           const viewportWidth = sliderEl.offsetWidth;
-
+          const wrapperWidth = wrapper.scrollWidth;
           if (wrapperWidth > viewportWidth) {
-            // Duplicate once for seamless loop
-            if (!sliderEl.classList.contains("duplicated")) {
-              slides.forEach((slide) => {
-                wrapper.appendChild(slide.cloneNode(true));
-              });
-              sliderEl.classList.add("duplicated");
-            }
+            // Clone the slides
+            slides.forEach((slide) => {
+              wrapper.appendChild(slide.cloneNode(true));
+            });
+            // Adding this class now triggers the CSS animation
+            // on the newly doubled width simultaneously.
+            sliderEl.classList.add("duplicated");
           } else {
-            // If not overflowing, center logos instead
             sliderEl.classList.add("center-logos");
           }
         });
       }
-      window.addEventListener("load", initCompanySliders);
+      // Use DOMContentLoaded for a faster trigger than 'load'
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCompanySliders);
+      } else {
+        initCompanySliders();
+      }
       window.addEventListener("resize", initCompanySliders);
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const modalEl = document.getElementById("samplePopup");
+        const popupModal = new bootstrap.Modal(modalEl);
+        const MAX_SHOWS = 2;
+        const SHOW_DELAY = 3000; // 3 seconds
+        const RESHOW_DELAY = 22000; // 22 seconds
+        let showCount = Number(sessionStorage.getItem("popupShowCount") || 0);
+        let disabled = sessionStorage.getItem("popupDisabled") === "true";
+        function showPopup() {
+          if (disabled) return;
+          if (showCount >= MAX_SHOWS) return;
+          popupModal.show();
+          showCount++;
+          sessionStorage.setItem("popupShowCount", showCount);
+        }
+        // 🔹 First popup after 3 seconds
+        if (!disabled && showCount < MAX_SHOWS) {
+          setTimeout(showPopup, SHOW_DELAY);
+        }
+        // 🔹 When popup is closed
+        modalEl.addEventListener("hidden.bs.modal", function () {
+          if (disabled) return;
+          if (showCount >= MAX_SHOWS) return;
+          setTimeout(showPopup, RESHOW_DELAY);
+        });
+        // 🔹 If user clicks the link inside modal → disable popup for session
+        modalEl.querySelector("a").addEventListener("click", function () {
+          sessionStorage.setItem("popupDisabled", "true");
+        });
+      });
     </script>
   </body>
 </html>
