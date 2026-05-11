@@ -1,11 +1,17 @@
 (function ($) {
   ("use strict");
   // Lenis Smooth Scroll JS Starts
+  const DROPDOWN_SELECTOR = '[class*="Dropdown__DropdownContainer-sc"]';
+  const POPUP_SELECTOR = ".popup-content";
+
+  // Combine selectors
+  const SCROLL_EXCLUDE_SELECTOR = `${DROPDOWN_SELECTOR}, ${POPUP_SELECTOR}, .samplepopup .modal-content`;
+
   const locomotiveScroll = new LocomotiveScroll({
     lenisOptions: {
       wrapper: window,
       content: document.documentElement,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.1,
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
@@ -13,9 +19,30 @@
       wheelMultiplier: 1,
       touchMultiplier: 2,
       normalizeWheel: true,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+
+      // Single prevent handler
+      prevent: (node) => node?.closest(SCROLL_EXCLUDE_SELECTOR),
     },
   });
   // Lenis Smooth Scroll JS Ends
+
+  // Unified scroll blocker
+  const stopScrollPropagation = (e) => {
+    if (!e.target) return;
+
+    if (e.target.closest(SCROLL_EXCLUDE_SELECTOR)) {
+      e.stopPropagation();
+    }
+  };
+
+  // Capture phase ensures we beat Lenis
+  ["wheel", "touchmove"].forEach((event) => {
+    document.addEventListener(event, stopScrollPropagation, {
+      passive: false,
+      capture: true,
+    });
+  });
 
   // Header Reveal On Scroll Starts
   var headerscroll = document.getElementById("header");
@@ -139,4 +166,33 @@
     },
   });
   // Single Product Slider Area JS Ends
+
+  // Newsletter Arrow JS Starts
+  (function () {
+    const interval = setInterval(() => {
+      const buttonSpan = document.querySelector(".eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root .es-button-base-overlay");
+      if (buttonSpan && !buttonSpan.querySelector(".cta-arrow")) {
+        const spanElement = document.createElement("span");
+        spanElement.className = "cta-arrow";
+        spanElement.innerHTML = `<img src="https://www.tyt.co.in/ecolattice/assets/img/new-arrow.svg" alt="Navigation Arrow">`;
+        buttonSpan.appendChild(spanElement);
+        clearInterval(interval);
+      }
+    }, 300);
+  })();
+  // Newsletter Arrow JS Ends
+
+  // Request Sample CTA JS Starts
+  document.addEventListener("DOMContentLoaded", function () {
+    const modalEl = document.getElementById("samplePopup");
+    const popupModal = new bootstrap.Modal(modalEl);
+    // Open popup on button click
+    document.querySelectorAll(".open-sample-popup").forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        popupModal.show();
+      });
+    });
+  });
+  // Request Sample CTA JS Ends
 })(jQuery);

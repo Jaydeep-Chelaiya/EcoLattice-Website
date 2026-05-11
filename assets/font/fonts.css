@@ -1,0 +1,105 @@
+/*
+Font: 		Unytour Font Family
+Style: 		Regular
+URL: 		https://youworkforthem.com/font/T22390/unytour
+Foundry: 	NicolassFonts
+Foundry: 	https://youworkforthem.com/designer/1443/nicolassfonts
+Copyright:	
+Version: 	18
+Created:	April 02, 2026
+License: 	https://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-extra-light.woff2") format("woff2"),
+    url("unytour-extra-light.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-light.woff2") format("woff2"),
+    url("unytour-light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-regular.woff2") format("woff2"),
+    url("unytour-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-medium.woff2") format("woff2"),
+    url("unytour-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-semi-bold.woff2") format("woff2"),
+    url("unytour-semi-bold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-bold.woff2") format("woff2"),
+    url("unytour-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-extra-bold.woff2") format("woff2"),
+    url("unytour-extra-bold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour";
+  src:
+    url("unytour-black.woff2") format("woff2"),
+    url("unytour-black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unytour-Heavy";
+  src:
+    url("unytour-heavy.woff2") format("woff2"),
+    url("unytour-heavy.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
