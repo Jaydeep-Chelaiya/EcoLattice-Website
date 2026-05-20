@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>Products || EcoLattice</title>
+    <meta name="title" content="Products || EcoLattice" />
+    <meta name="description" content="Products || EcoLattice" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ecolattice.uk/" />
+    <meta property="og:title" content="Products || EcoLattice" />
+    <meta property="og:description" content="Products || EcoLattice" />
+    <meta property="og:image" content="https://www.ecolattice.uk/assets/img/all-about-company.jpeg" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.ecolattice.uk/" />
+    <meta property="twitter:title" content="Products || EcoLattice" />
+    <meta property="twitter:description" content="Products || EcoLattice" />
+    <meta property="twitter:image" content="https://www.ecolattice.uk/assets/img/all-about-company.jpeg" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <!-- Swiper Slider Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css" />
+    <!-- Fancybox Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/jquery.fancybox.min.css" />
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Font Stylesheet -->
+    <link rel="stylesheet" href="../assets/font/fonts.css" />
+  </head>
+  <body>
+    <!-- Header Area Starts -->
+    <header class="header" id="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html"><img class="logo" src="../assets/img/ecolattice-logo-vector.svg" alt="EcoLattice Logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mt-2 mb-2 mt-lg-0 mb-lg-0 ms-lg-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link active" href="../products/" id="productLink">Our Products</a>
+                <span class="dropdown-toggle-icon" role="button" aria-expanded="false" id="dropdownIcon"></span>
+                <div class="dropdown-wrapper">
+                  <ul class="dropdown-list-wrapper">
+                    <li>
+                      <a class="dropdown-item" href="../products/ergo-collection.html">Ergo Collection</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item active" href="../products/infinity-collection.html">Infinity Collection</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="../products/designer-collection.html">Designer Collection</a>
+                    </li>
+                  </ul>
+                  <div class="menu-posters-wrapper">
+                    <ul class="posters" id="posters">
+                      <li class="single-poster-item active">
+                        <img src="../assets/img/ergo-collection-menu.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="../assets/img/infinity-collection-menu.jpg" />
+                      </li>
+                      <li class="single-poster-item">
+                        <img src="../assets/img/designer-collection-menu.jpg" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../services.html">Our Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../about-us.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.blog.ecolattice.uk/" target="_blank">Explore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../contact-us.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Header Area Ends -->
+
+    <!-- Inside Pages Banner Area Starts -->
+    <section class="inner-banner-sec single-product-banner">
+      <div class="bkgd-container" style="background-image: url(../assets/img/product-banner.jpg)"></div>
+      <div class="container">
+        <div class="banner-content">
+          <h1 class="sec-title text-white" id="productName"></h1>
+          <p class="banner-description">A low seater designed as a continuous, folded form that grounds the body close to the floor.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Inside Pages Banner Area Ends -->
+
+    <!-- Single Product Detail Area Starts -->
+    <section class="sec-spacing product-section">
+      <div class="container">
+        <div class="product-flex">
+          <div class="gallery-wrap">
+            <!-- MAIN -->
+            <div class="swiper productMainSwiper">
+              <div class="swiper-wrapper" id="mainSwiperWrapper"></div>
+              <!-- MAIN NAV -->
+              <div class="swiper-button-prev g-btn prev"><img src="../assets/img/gallery-arrow-prev.svg" /></div>
+              <div class="swiper-button-next g-btn next"><img src="../assets/img/gallery-arrow.svg" /></div>
+              <!-- ZOOM BUTTON -->
+              <button class="zoom-btn" id="zoomBtn"><img src="../assets/img/zoom.svg" alt="Zoom Icon" /></button>
+            </div>
+            <!-- THUMBS -->
+            <div class="thumbs-wrap">
+              <div class="swiper productThumbSwiper">
+                <div class="thumb-nav thumb-prev"><img src="../assets/img/gallery-arrow-prev.svg" /></div>
+                <div class="swiper-wrapper" id="thumbSwiperWrapper"></div>
+                <div class="thumb-nav thumb-next"><img src="../assets/img/gallery-arrow.svg" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-detail">
+            <div class="order-2 mt-4 mt-lg-0 order-lg-1">
+              <div class="detail-block">
+                <h2 class="product-detail-title">About</h2>
+                <p class="single-pro-desc">A low seater designed as a continuous, folded form that grounds the body close to the floor, seat and backrest emerging from a single gesture. It is held in place by two arched base loops that distribute weight naturally.</p>
+                <p class="single-pro-desc">Its proximity to the floor makes it particularly suited to spaces that call for stillness and inward focus, adapting easily to meditation corners, reading alcoves, and informal floor-level seating in both indoor and garden settings.</p>
+              </div>
+              <div class="detail-block">
+                <h2 class="product-detail-title">Material & Finishes</h2>
+                <p class="single-pro-desc">Designed and produced by Ecolattice, Orbit is made from a recycled PETG glass-fibre composite. The durable, weather-resistant material makes it suitable for outdoor use while demonstrating the potential of recycled composites in large-format 3D printing.</p>
+              </div>
+            </div>
+            <div class="order-1 w-100 order-lg-2">
+              <div class="detail-block">
+                <div class="var-row">
+                  <span class="var-label">Colour</span>
+                  <span class="var-value" id="color-name">—</span>
+                </div>
+                <div class="swatches" id="swatches"></div>
+              </div>
+              <button id="enquiryBtn" class="product-cta">Enquiry Now <img src="../assets/img/new-arrow.svg" alt="Right Arrow Icon" /></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Single Product Detail Area Starts -->
+
+    <div id="toast"></div>
+
+    <!-- Product Form PopUp Area Starts -->
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close" id="closePopup"><img src="../assets/img/prod-popup-close-icon.svg" alt="Close Icon" /></span>
+        <div class="product-body">
+          <div class="product-info">
+            <div class="product-img">
+              <img id="popupImage" />
+            </div>
+            <div class="pro-info">
+              <h3 id="popupProduct"></h3>
+              <div class="prod-info-detail">
+                <div class="single-info-item" id="popupColor"></div>
+                <div class="single-info-item" id="popupSize"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-form">
+            <!-- ELFSIGHT -->
+            <script src="https://static.elfsight.com/platform/platform.js" async></script>
+            <div class="elfsight-app-00e8bb15-7694-45b2-93be-53c5e85f3e98 contact-form" data-elfsight-app-lazy></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Product Form PopUp Area Ends -->
+
+    <!-- About Us Connect Us Area Starts -->
+    <section class="sec-connect">
+      <div class="container">
+        <div class="connect-top-area">
+          <h2 class="sec-title">Let's Connect</h2>
+        </div>
+        <div class="connect-items">
+          <div class="connect-item">
+            <a href="../contact-us.html" class="sec-cta">
+              <span>Product Enquiry</span>
+              <span class="cta-arrow"><img src="../assets/img/new-arrow.svg" alt="Navigation Arrow" /></span>
+            </a>
+            <p>Get detailed information about the product, specifications, and availability.</p>
+          </div>
+          <div class="connect-item">
+            <a href="#" class="sec-cta open-sample-popup">
+              <span>Get a sample</span>
+              <span class="cta-arrow"><img src="../assets/img/new-arrow.svg" alt="Navigation Arrow" /></span>
+            </a>
+            <p>Experience our material first-hand with a high quality lattice sample.</p>
+          </div>
+          <div class="connect-item">
+            <a href="../contact-us.html" class="sec-cta">
+              <span>Let's Collaborate</span>
+              <span class="cta-arrow"><img src="../assets/img/new-arrow.svg" alt="Navigation Arrow" /></span>
+            </a>
+            <p style="margin-bottom: 0">Work with us to develop solutions tailored to your needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Us Connect Area Ends -->
+
+    <!-- Newsletter SignUp Area Starts -->
+    <section class="newsletter-sec">
+      <div class="container">
+        <div class="newsletter-flex">
+          <!-- Elfsight Form Builder | Newsletter SignUp -->
+          <script src="https://static.elfsight.com/platform/platform.js" async></script>
+          <div class="elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0" data-elfsight-app-lazy></div>
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter SignUp Area Ends -->
+
+    <!-- Footer Area Starts -->
+    <footer class="footer">
+      <div class="container">
+        <div class="ftr-top">
+          <div class="row">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+              <div class="ftr-logo-area">
+                <a class="ftr-logo" href="../index.html"><img src="../assets/img/ecolattice-logo-vector.svg" alt="EcoLattice Logo" /></a>
+                <p>Bring innovation to your surroundings too with us. Connect with us to start your next project and explore how our innovative foam solutions can elevate your designs.</p>
+                <div class="follow-list-area">
+                  <span>Follow Us</span>
+                  <ul class="follow-list">
+                    <li>
+                      <a href="https://www.facebook.com/ecolattice" target="_blank"><img src="../assets/img/facebook-icon.svg" alt="Facebook Icon" /></a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/ecolattice_/" target="_blank"><img src="../assets/img/instagram-icon.svg" alt="Instagram Icon" /></a>
+                    </li>
+                    <li>
+                      <a href="https://www.linkedin.com/company/ecolattice/" target="_blank"><img src="../assets/img/linkedin-icon.svg" alt="LinkedIn Icon" /></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/ecolattice_" target="_blank"><img src="../assets/img/twitter-icon.svg" alt="Twitter Icon" /></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-lg-4 col-xl-2 pe-xl-0 pe-xxl-4">
+              <div class="single-ftr-item">
+                <span class="ftr-item-title">Quick Links</span>
+                <ul class="ftr-list">
+                  <li><a href="../about-us.html">About Us</a></li>
+                  <li><a href="../services.html">Our Services</a></li>
+                  <li><a href="https://www.blog.ecolattice.uk/" target="_blank">Explore</a></li>
+                  <li><a href="../contact-us.html">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-xl-2 px-xl-0 px-xxl-4">
+              <div class="single-ftr-item ps-md-0">
+                <span class="ftr-item-title">Products</span>
+                <ul class="ftr-list">
+                  <li><a href="ergo-collection.html">Ergo Collection</a></li>
+                  <li><a href="infinity-collection.html">Infinity Collection</a></li>
+                  <li><a href="designer-collection.html">Designer Collection</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-4 ps-xl-0 ps-xxl-4">
+              <div class="single-ftr-item ps-md-0 pt-md-4 pt-xl-0">
+                <span class="ftr-item-title">Locations</span>
+                <div class="d-md-flex flex-xl-column gap-md-5 gap-xl-4">
+                  <ul class="contact-list w-md-50 w-xl-100">
+                    <li>
+                      <img src="../assets/img/location-icon.svg" alt="Location Mark Icon" /><a href="https://maps.app.goo.gl/XY3Sro6HAL9CVXJ38" target="_blank">
+                        <span class="ft-location-tag">UK</span>
+                        <address class="mb-0">133, One Eighty Stratford, London, <br class="d-none d-xxl-block" />United Kingdom - E15 2FE.</address>
+                      </a>
+                    </li>
+                    <li>
+                      <ul class="ft-contact-inner-list">
+                        <li><img src="../assets/img/call-icon.svg" alt="Call Icon" /><a href="tel:+44 78837 51381" class="text-nowrap">+44 78837 51381</a></li>
+                        <li><img src="../assets/img/mail-icon.svg" alt="Mail Icon" /><a href="mailto:contact@ecolattice.uk" class="text-nowrap">contact@ecolattice.uk</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="contact-list w-md-50 w-xl-100 mt-4 mt-md-0 mt-xxl-3">
+                    <li>
+                      <img src="../assets/img/location-icon.svg" alt="Location Mark Icon" /><a href="https://maps.app.goo.gl/RZoQdp5kFBTUbH3h6" target="_blank">
+                        <span class="ft-location-tag">India</span>
+                        <address class="mb-0">GF-19, City Square, Godrej Garden City, Jagatpura, Ahmedabad, Gujarat- 382470.</address>
+                      </a>
+                    </li>
+                    <li>
+                      <ul class="ft-contact-inner-list">
+                        <li><img src="../assets/img/call-icon.svg" alt="Call Icon" /><a href="tel:+91 82380 02122" class="text-nowrap">+91 82380 02122</a></li>
+                        <li><img src="../assets/img/mail-icon.svg" alt="Mail Icon" /><a href="mailto:contact@ecolattice.uk" class="text-nowrap">contact@ecolattice.uk</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ftr-btm">
+          <div class="d-flex gap-3 gap-lg-4">
+            <p>&#169; 2026 EcoLattice</p>
+            <a class="ps-lg-2" href="../sitemap.html">Sitemap</a>
+          </div>
+          <p>Designed & Developed by <a href="https://www.tytstudio.com/" target="_blank">TYT Studio</a></p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Area Ends -->
+
+    <!-- Sample Request Modal Area Starts -->
+    <div class="modal fade samplepopup" id="samplePopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="popup-close"><img src="../assets/img/close-arrow.svg" alt="Close Icon" /></button>
+          <div class="modal-body">
+            <!-- Elfsight Form Builder | Request a Sample -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-9be136c0-0de6-4298-83b6-1329e60de016" data-elfsight-app-lazy></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sample Request Modal Area Ends -->
+
+    <!-- Required JS -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/locomotive-scroll.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/jquery.fancybox.min.js"></script>
+    <script src="../assets/js/headroom.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+    <script>
+      const PRODUCT_DATA = {
+        slug: "orbit",
+        name: "Orbit",
+
+        // 🔥 SAME GALLERY FOR ALL COLORS
+        sharedGallery: true,
+
+        colors: [
+          {
+            name: "Ochre Yellow",
+            hex: "#CCAA4E",
+            image: "../assets/img/product/orbit-ochre-yellow-img-1.png",
+          },
+          {
+            name: "Coral Red",
+            hex: "#AC4034",
+            image: "../assets/img/product/orbit-colar-red-img-1.png",
+          },
+          {
+            name: "Verde Reseda",
+            hex: "#607B56",
+            image: "../assets/img/product/orbit-verde-reseda-img-1.png",
+          },
+          {
+            name: "Grigio Beige",
+            hex: "#5B5751",
+            image: "../assets/img/product/orbit-grigio-beige-img-1.png",
+          },
+          {
+            name: "Pigeon Blue",
+            hex: "#6C7B98",
+            image: "../assets/img/product/orbit-pigeon-blue-img-1.png",
+          },
+        ],
+
+        // 🔥 SINGLE COMMON GALLERY
+        gallery: ["../assets/img/product/orbit-ochre-yellow-img-1.png", "../assets/img/product/orbit-colar-red-img-1.png", "../assets/img/product/orbit-verde-reseda-img-1.png", "../assets/img/product/orbit-grigio-beige-img-1.png", "../assets/img/product/orbit-pigeon-blue-img-1.png"],
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initProduct(PRODUCT_DATA);
+      });
+    </script>
+    <script src="product.js"></script>
+  </body>
+</html>

@@ -5,6 +5,8 @@ let CUR_KEY = null;
 let colorIdx = 0;
 let imgIdx = 0;
 let sizeIdx = 0;
+let mainSwiper;
+let thumbSwiper;
 
 function initProduct(productData) {
   window.PRODUCT = productData;
@@ -28,99 +30,82 @@ function renderTitle() {
 function renderProduct() {
   const p = window.PRODUCT;
 
-  // Only render swatches and sizes if the elements exist and data is provided
+  renderTitle();
+
+  // Only render swatches if available
   if (p.colors && p.colors.length > 0) {
     renderSwatches(p);
-    buildThumbs(p);
   }
 
+  // Only render sizes if available
   if (p.sizes && p.sizes.length > 0) {
     renderSizes(p);
   }
 
-  // Set main image if colors exist, otherwise use static image from HTML
-  if (p.colors && p.colors.length > 0) {
-    setMainImage(p, false);
-  }
-}
-
-function setMainImage(p, animate) {
-  const img = document.getElementById("main-img");
-  const images = p.colors?.[colorIdx]?.images;
-
-  if (!img || !images || images.length === 0) return; // Exit if no images available
-
-  if (animate) {
-    img.classList.add("fade");
-    setTimeout(() => {
-      img.src = images[imgIdx];
-      img.classList.remove("fade");
-    }, 200);
-  } else {
-    img.src = images[imgIdx];
-  }
-}
-
-function scrollActiveThumb() {
-  const container = document.getElementById("thumbs");
-  const thumbs = container?.querySelectorAll(".thumb");
-
-  if (!container || !thumbs || thumbs.length === 0) return;
-
-  const active = thumbs[imgIdx];
-  if (!active) return;
-
-  const left = active.offsetLeft;
-  const width = active.offsetWidth;
-
-  container.scrollTo({
-    left: left - container.offsetWidth / 2 + width / 2,
-    behavior: "smooth",
-  });
+  // 🔥 Build swiper slides
+  buildThumbs(p);
 }
 
 function buildThumbs(p) {
-  const el = document.getElementById("thumbs");
-  if (!el) return; // Exit if thumbs element doesn't exist
+  const mainWrapper = document.getElementById("mainSwiperWrapper");
+  const thumbWrapper = document.getElementById("thumbSwiperWrapper");
 
-  const images = p.colors?.[colorIdx]?.images;
-  if (!images) return;
+  if (!mainWrapper || !thumbWrapper) return;
 
-  el.innerHTML = images
-    .map(
-      (src, i) => `
-      <div class="thumb ${i === imgIdx ? "active" : ""}" onclick="goImg(${i})">
-        <img src="${src}" loading="lazy">
-      </div>`,
-    )
-    .join("");
+  // ======================================
+  // SHARED GALLERY MODE
+  // ======================================
+  if (p.sharedGallery) {
+    mainWrapper.innerHTML = p.gallery
+      .map(
+        (src) => `
+        <div class="swiper-slide">
+          <img src="${src}">
+        </div>
+      `,
+      )
+      .join("");
 
-  // 👉 Wait for DOM paint, then scroll
-  setTimeout(scrollActiveThumb, 0);
-}
+    thumbWrapper.innerHTML = p.gallery
+      .map(
+        (src, i) => `
+        <div class="swiper-slide" onclick="selectColor(${i})">
+          <img src="${src}">
+        </div>
+      `,
+      )
+      .join("");
+  }
 
-function navImg(dir) {
-  const images = PRODUCT.colors?.[colorIdx]?.images;
-  if (!images || images.length === 0) return;
+  // ======================================
+  // NORMAL MODE
+  // ======================================
+  else {
+    const images = p.colors?.[colorIdx]?.images || [];
 
-  imgIdx = (imgIdx + dir + images.length) % images.length;
+    mainWrapper.innerHTML = images
+      .map(
+        (src) => `
+        <div class="swiper-slide">
+          <img src="${src}">
+        </div>
+      `,
+      )
+      .join("");
 
-  setMainImage(PRODUCT, true);
+    thumbWrapper.innerHTML = images
+      .map(
+        (src) => `
+        <div class="swiper-slide">
+          <img src="${src}">
+        </div>
+      `,
+      )
+      .join("");
+  }
 
-  document.querySelectorAll(".thumb").forEach((el, i) => {
-    el.classList.toggle("active", i === imgIdx);
-  });
-  scrollActiveThumb();
-}
-
-function goImg(i) {
-  imgIdx = i;
-  setMainImage(PRODUCT, true);
-
-  document.querySelectorAll(".thumb").forEach((el, j) => {
-    el.classList.toggle("active", j === i);
-  });
-  scrollActiveThumb();
+  initSwipers();
+  initZoom();
 }
 
 function toggleZoom(el) {
@@ -151,13 +136,19 @@ function selectColor(i) {
   });
 
   const colorNameEl = document.getElementById("color-name");
+
   if (colorNameEl && PRODUCT.colors?.[i]) {
     colorNameEl.textContent = PRODUCT.colors[i].name;
     toast("Color: " + PRODUCT.colors[i].name);
   }
 
-  if (PRODUCT.colors?.[colorIdx]?.images) {
-    setMainImage(PRODUCT, true);
+  // Shared gallery → only move slide
+  if (PRODUCT.sharedGallery) {
+    mainSwiper.slideTo(i);
+  }
+
+  // Normal gallery → rebuild images
+  else {
     buildThumbs(PRODUCT);
   }
 }
@@ -191,6 +182,58 @@ function selectSize(i) {
   }
 }
 
+// Swiper
+function initSwipers() {
+  if (mainSwiper) mainSwiper.destroy(true, true);
+  if (thumbSwiper) thumbSwiper.destroy(true, true);
+  // THUMBS
+  thumbSwiper = new Swiper(".productThumbSwiper", {
+    spaceBetween: 10,
+    freeMode: true,
+    preventClicks: true,
+    preventClicksPropagation: true,
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: ".thumb-next",
+      prevEl: ".thumb-prev",
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 4,
+      },
+      576: {
+        slidesPerView: 6,
+      },
+      992: {
+        slidesPerView: 4,
+      },
+      1400: {
+        slidesPerView: 5,
+      },
+    },
+  });
+
+  // MAIN
+  mainSwiper = new Swiper(".productMainSwiper", {
+    preventClicks: true,
+    effect: "fade", // Enables fade transition
+    fadeEffect: {
+      crossFade: true, // Fixes overlapping issues
+    },
+    preventClicksPropagation: true,
+    // loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next.next",
+      prevEl: ".swiper-button-prev.prev",
+    },
+    thumbs: {
+      swiper: thumbSwiper,
+    },
+  });
+}
+
 // ================= TOAST =================
 let toastTimer;
 
@@ -206,11 +249,6 @@ function toast(msg) {
     el.classList.remove("show");
   }, 2000);
 }
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") navImg(-1);
-  if (e.key === "ArrowRight") navImg(1);
-});
 
 // =========================================
 // ============== POPUP SCRIPT =============
@@ -230,10 +268,22 @@ document.addEventListener("DOMContentLoaded", function () {
       const size = product.sizes?.[sizeIdx]?.label || "";
 
       // Get image: use color images if available, otherwise fallback to main image from HTML
-      let image = product.colors?.[colorIdx]?.images?.[imgIdx];
-      if (!image) {
-        const mainImgEl = document.getElementById("main-img");
-        image = mainImgEl?.src || "";
+      // 🔥 Get current active swiper image
+      let image = "";
+
+      // SHARED GALLERY
+      if (PRODUCT.sharedGallery) {
+        image = PRODUCT.gallery?.[colorIdx] || PRODUCT.gallery?.[0] || "";
+      }
+
+      // MULTIPLE IMAGES PER COLOR
+      else if (PRODUCT.colors?.[colorIdx]?.images) {
+        image = PRODUCT.colors[colorIdx].images?.[0] || "";
+      }
+
+      // SINGLE IMAGE PER COLOR
+      else if (PRODUCT.colors?.[colorIdx]?.image) {
+        image = PRODUCT.colors[colorIdx].image || "";
       }
 
       // ✅ POPUP UI
@@ -270,4 +320,80 @@ document.addEventListener("DOMContentLoaded", function () {
       if (popup) popup.classList.remove("show");
     });
   }
+});
+function getCurrentImages() {
+  if (PRODUCT.galleryMode === "shared") {
+    return PRODUCT.images || [];
+  }
+  return PRODUCT.colors?.[colorIdx]?.images || [];
+}
+function initZoom() {
+  const zoomBtn = document.getElementById("zoomBtn");
+
+  if (!zoomBtn) return;
+
+  zoomBtn.onclick = (e) => {
+    e.stopPropagation();
+
+    let galleryImages = [];
+
+    // ======================================
+    // SHARED GALLERY MODE
+    // ======================================
+    if (PRODUCT.sharedGallery) {
+      galleryImages = PRODUCT.gallery || [];
+    }
+
+    // ======================================
+    // NORMAL MODE
+    // ======================================
+    else {
+      galleryImages = PRODUCT.colors?.[colorIdx]?.images || [];
+    }
+
+    if (!galleryImages.length) return;
+
+    // 🔥 GET CURRENT ACTIVE SLIDE
+    const activeIndex = mainSwiper?.realIndex || 0;
+
+    $.fancybox.open(
+      galleryImages.map((src) => ({
+        src: src,
+        thumb: src,
+        opts: {
+          caption: PRODUCT.name || "",
+          thumb: src,
+        },
+      })),
+      {
+        loop: false,
+
+        // 🔥 START FROM CURRENT IMAGE
+        index: activeIndex,
+
+        buttons: ["zoom", "slideShow", "thumbs", "close"],
+
+        // thumbs: {
+        //   autoStart: true,
+        // },
+
+        animationEffect: "zoom",
+        transitionEffect: "slide",
+      },
+    );
+  };
+}
+
+// Hide Product Info On Submission
+document.addEventListener("DOMContentLoaded", function () {
+  const observer = new MutationObserver(function () {
+    const success = document.querySelector('[class*="SubmitMessage__Container-sc"]');
+    if (success) {
+      document.querySelector(".product-info").style.display = "none";
+    }
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
 });
