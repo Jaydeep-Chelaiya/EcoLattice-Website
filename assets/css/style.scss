@@ -216,6 +216,7 @@ html[data-scroll-orientation="horizontal"] {
     font-size: $font-size-xl;
     font-weight: 400;
     color: $black-color;
+    line-height: 1.25;
 
     // max-width: max-content;
     &.active {
@@ -299,7 +300,8 @@ html[data-scroll-orientation="horizontal"] {
 .dropdown-list-wrapper {
   li {
     a {
-      font-weight: 500;
+      color: $black-color;
+      font-weight: 600;
     }
   }
 }

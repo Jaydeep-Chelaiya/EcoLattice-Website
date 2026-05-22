@@ -138,6 +138,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   font-size: 20px;
   font-weight: 400;
   color: #565656;
+  line-height: 1.25;
 }
 .navbar-nav .nav-link.active {
   font-weight: 500;
@@ -222,7 +223,8 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 
 .dropdown-list-wrapper li a {
-  font-weight: 500;
+  color: #565656;
+  font-weight: 600;
 }
 
 @media all and (min-width: 760px) {
