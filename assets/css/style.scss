@@ -237,7 +237,9 @@ html[data-scroll-orientation="horizontal"] {
 .navbar-toggler {
   padding: 0;
   border: none;
-  &:focus {
+  &:focus,
+  &:hover {
+    background-color: transparent;
     box-shadow: none;
   }
 }
@@ -292,6 +294,13 @@ html[data-scroll-orientation="horizontal"] {
   &.active {
     background-color: $primary-color;
     color: $black-color;
+  }
+}
+.dropdown-list-wrapper {
+  li {
+    a {
+      font-weight: 500;
+    }
   }
 }
 @include mediaQuery(min, 760px) {
@@ -2881,14 +2890,18 @@ html[data-scroll-orientation="horizontal"] {
   .products-list-sec {
     row-gap: 40px;
   }
-  .product-content {
-    padding: $section-space-md;
+  .single-product-item {
+    align-items: center;
   }
+  .product-content {
+    padding: $spacing-xl $section-space-md - 10;
+  }
+
   .product-item-title {
     font-size: $title-xxl + 4;
   }
   .product-item-description {
-    font-size: $font-size-xl;
+    font-size: $font-size-lg;
   }
 }
 @include mediaQuery(min, 1400px) {
@@ -2901,7 +2914,7 @@ html[data-scroll-orientation="horizontal"] {
   .product-content {
     @include flex(flex-start, flex-start);
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
   .h-divider {
     margin: 0 $spacing-lg;
@@ -2915,7 +2928,7 @@ html[data-scroll-orientation="horizontal"] {
     gap: 40px;
   }
   .product-content {
-    padding: $section-space-lg $section-space-xxl $section-space-lg $section-space-md;
+    padding: 0 $section-space-xxl 0 $section-space-md;
   }
   .product-item-description {
     max-width: 94%;
@@ -5084,7 +5097,22 @@ html[data-scroll-orientation="horizontal"] {
   gap: $spacing-md;
 }
 .single-product {
+  transition: $transition;
+  overflow: hidden;
+  &:hover {
+    .product-img {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+.product-img {
+  overflow: hidden;
+  border-radius: $border-radius;
   img {
+    transition: $transition;
+    transform: scale(1);
     border-radius: $border-radius;
   }
 }
@@ -5117,6 +5145,12 @@ html[data-scroll-orientation="horizontal"] {
   .product-title {
     margin-top: $spacing-lg - 5;
   }
+  .product-img {
+    border-radius: $border-radius-lg;
+    img {
+      border-radius: $border-radius-lg;
+    }
+  }
 }
 @include mediaQuery(min, 1400px) {
   .product-listing {
@@ -5136,6 +5170,13 @@ html[data-scroll-orientation="horizontal"] {
 ========================================= */
 .service-img {
   margin-top: $spacing-md;
+  &.cmf {
+    @include mediaQuery(max, 576px) {
+      img {
+        object-position: -160px center;
+      }
+    }
+  }
   img {
     height: 360px;
     object-fit: cover;
@@ -5305,7 +5346,7 @@ html[data-scroll-orientation="horizontal"] {
 @include mediaQuery(min, 992px) {
   .material-name {
     span {
-      font-size: $font-size-xxl;
+      font-size: $font-size-xl;
     }
   }
 }
@@ -5320,6 +5361,13 @@ html[data-scroll-orientation="horizontal"] {
   .material-name {
     left: 25px;
     bottom: 22px;
+    span {
+      font-size: $title-xs;
+    }
+  }
+}
+@include mediaQuery(min, 1400px) {
+  .material-name {
     span {
       font-size: $title-sm;
     }
@@ -6022,7 +6070,7 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 1400px) {
   .global-presence {
-    padding: $section-space-lg $section-space-md;
+    padding: $section-space-md;
   }
   .relevance-area {
     padding: $section-space-sm + 10 $section-space-md;
@@ -6264,12 +6312,12 @@ html[data-scroll-orientation="horizontal"] {
 .sitemap-section {
   .sitemap-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     @media (max-width: 991px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    @media (max-width: 640px) {
+    @media (max-width: 767px) {
       grid-template-columns: 1fr;
     }
   }

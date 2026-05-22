@@ -51,10 +51,10 @@
                 <div class="dropdown-wrapper">
                   <ul class="dropdown-list-wrapper">
                     <li>
-                      <a class="dropdown-item active" href="../products/ergo-collection.html">Ergo Collection</a>
+                      <a class="dropdown-item" href="../products/ergo-collection.html">Ergo Collection</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../products/infinity-collection.html">Infinity Collection</a>
+                      <a class="dropdown-item active" href="../products/infinity-collection.html">Infinity Collection</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="../products/designer-collection.html">Designer Collection</a>
@@ -96,11 +96,10 @@
 
     <!-- Inside Pages Banner Area Starts -->
     <section class="inner-banner-sec single-product-banner">
-      <div class="bkgd-container" style="background-image: url(../assets/img/product-banner-ergo.jpg)"></div>
+      <div class="bkgd-container" style="background-image: url(../assets/img/product-banner-infinity.jpg)"></div>
       <div class="container">
         <div class="banner-content">
           <h1 class="sec-title text-white" id="productName"></h1>
-          <p class="banner-description">Complete Back Support</p>
         </div>
       </div>
     </section>
@@ -133,11 +132,14 @@
             <div class="order-2 mt-4 mt-lg-0 order-lg-1">
               <div class="detail-block">
                 <h2 class="product-detail-title">About</h2>
-                <p class="single-pro-desc">Align is a full-back support that covers the full span from lumbar to mid-back. It brings consistent spinal support to chairs designed for aesthetics rather than the ergonomics. With an open lattice structure, it maintains natural airflow while the structure adapts through extended use.</p>
+                <p class="single-pro-desc">A modular wall panel system that extends EcoLattice's design language to the vertical plane, it brings the same material precision and formal rigour of the seating collection to partitions, cladding, facades, and wall pieces.</p>
+                <p class="single-pro-desc">Each panel is produced through large-format material extrusion, working across a range of materials from polymer composites to clay, terracotta, ceramics, and biomaterials.</p>
+                <p class="single-pro-desc">One system, two material families, and a consistent commitment to surfaces that are considered rather than incidental.</p>
               </div>
               <div class="detail-block">
                 <h2 class="product-detail-title">Material & Finishes</h2>
-                <p class="single-pro-desc">Moulded in EcoLattice™ Technology gyroid, distributing pressure across an open, breathable structure that holds its form without compressing flat. It is finished with a removable stretch knit cover for soft and smooth touch.</p>
+                <p class="single-pro-desc"><strong>Vanta</strong> - Vanta is a wall panel collection produced through material extrusion, applying polymer-based fabrication to architectural surface design.</p>
+                <p class="single-pro-desc"><strong>Cortex</strong> - This is a wall panel collection crafted through material extrusion, working with clay, terracotta, ceramics, and bio-materials to bring natural material traditions into architectural surface design.</p>
               </div>
             </div>
             <div class="order-1 w-100 order-lg-2">
@@ -147,13 +149,6 @@
                   <span class="var-value" id="color-name">—</span>
                 </div>
                 <div class="swatches" id="swatches"></div>
-              </div>
-              <div class="detail-block">
-                <div class="var-row">
-                  <span class="var-label">Size</span>
-                  <span class="var-value" id="size-name">—</span>
-                </div>
-                <div class="sizes" id="sizes"></div>
               </div>
               <button id="enquiryBtn" class="product-cta">Enquiry Now <img src="../assets/img/new-arrow.svg" alt="Right Arrow Icon" /></button>
             </div>
@@ -361,35 +356,42 @@
     <script src="../assets/js/custom.js"></script>
     <script>
       const PRODUCT_DATA = {
-        slug: "align",
-        name: "Align",
+        slug: "wallpanels",
+        name: "Wall Panels",
 
         // 🔥 SAME GALLERY FOR ALL COLORS
-        sharedGallery: false,
+        sharedGallery: true,
 
         colors: [
           {
-            name: "Grey",
-            hex: "#C9CAC9",
-            images: ["../assets/img/product/align-grey-img-1.png", "../assets/img/product/align-blue-img-2.png", "../assets/img/product/align-blue-img-3.png", "../assets/img/product/align-blue-img-4.png", "../assets/img/product/align-blue-img-5.png", "../assets/img/product/align-blue-img-6.png", "../assets/img/product/align-blue-img-7.png", "../assets/img/product/align-blue-img-8.png", "../assets/img/product/align-blue-img-9.png"],
+            name: "Kiln",
+            hex: "#C1876B",
+            image: "../assets/img/product/wall-panels-img-1.png",
           },
           {
-            name: "Beige",
-            hex: "#CCC3AE",
-            images: ["../assets/img/product/align-beige-img-1.png", "../assets/img/product/align-blue-img-2.png", "../assets/img/product/align-blue-img-3.png", "../assets/img/product/align-blue-img-4.png", "../assets/img/product/align-blue-img-5.png", "../assets/img/product/align-blue-img-6.png", "../assets/img/product/align-blue-img-7.png", "../assets/img/product/align-blue-img-8.png", "../assets/img/product/align-blue-img-9.png"],
+            name: "Moss",
+            hex: "#3D6B4F",
+            image: "../assets/img/product/wall-panels-img-2.png",
           },
           {
-            name: "Blue",
-            hex: "#809CAA",
-            images: ["../assets/img/product/align-blue-img-1.png", "../assets/img/product/align-blue-img-2.png", "../assets/img/product/align-blue-img-3.png", "../assets/img/product/align-blue-img-4.png", "../assets/img/product/align-blue-img-5.png", "../assets/img/product/align-blue-img-6.png", "../assets/img/product/align-blue-img-7.png", "../assets/img/product/align-blue-img-8.png", "../assets/img/product/align-blue-img-9.png"],
+            name: "Chalk",
+            hex: "#D7D0BF",
+            image: "../assets/img/product/wall-panels-img-4.png",
           },
           {
-            name: "Green",
-            hex: "#9CA280",
-            images: ["../assets/img/product/align-green-img-1.png", "../assets/img/product/align-blue-img-2.png", "../assets/img/product/align-blue-img-3.png", "../assets/img/product/align-blue-img-4.png", "../assets/img/product/align-blue-img-5.png", "../assets/img/product/align-blue-img-6.png", "../assets/img/product/align-blue-img-7.png", "../assets/img/product/align-blue-img-8.png", "../assets/img/product/align-blue-img-9.png"],
+            name: "Umber",
+            hex: "#6F3E2B",
+            image: "../assets/img/product/wall-panels-img-3.png",
+          },
+          {
+            name: "Dune",
+            hex: "#9B8F7E",
+            image: "../assets/img/product/wall-panels-img-5.png",
           },
         ],
-        sizes: [{ label: "Small" }, { label: "Medium" }, { label: "Large" }],
+
+        // 🔥 SINGLE COMMON GALLERY
+        gallery: ["../assets/img/product/wall-panels-img-1.png", "../assets/img/product/wall-panels-img-2.png", "../assets/img/product/wall-panels-img-4.png", "../assets/img/product/wall-panels-img-3.png", "../assets/img/product/wall-panels-img-5.png", "../assets/img/product/wall-panels-img-6.png"],
       };
 
       document.addEventListener("DOMContentLoaded", () => {
