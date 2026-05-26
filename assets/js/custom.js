@@ -174,7 +174,7 @@
       if (buttonSpan && !buttonSpan.querySelector(".cta-arrow")) {
         const spanElement = document.createElement("span");
         spanElement.className = "cta-arrow";
-        spanElement.innerHTML = `<img src="https://www.tyt.co.in/ecolattice/assets/img/new-arrow.svg" alt="Navigation Arrow">`;
+        spanElement.innerHTML = `<img src="https://www.ecolattice.uk/assets/img/new-arrow.svg" alt="Navigation Arrow">`;
         buttonSpan.appendChild(spanElement);
         clearInterval(interval);
       }
