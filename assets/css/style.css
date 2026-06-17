@@ -3335,11 +3335,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   margin: 115px 0;
 }
 
-.contact-container .contact-title {
-  margin-bottom: 50px;
-}
 .contact-container .contact-title p {
   line-height: 1.35;
+  margin-bottom: 0;
 }
 
 .contact-form .single-form-item {
@@ -3387,6 +3385,10 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   margin-top: 20px;
 }
 
+.contact-form-cp {
+  width: 100%;
+}
+
 @media all and (min-width: 760px) {
   .contact-container {
     display: flex;
@@ -3396,6 +3398,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   .contact-container .contact-title {
     margin-bottom: 0;
     width: 50%;
+  }
+  .contact-form-cp {
+    width: 60%;
   }
   .contact-form {
     width: 46%;
@@ -3480,6 +3485,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
   .contact-form .single-form-item {
     margin-bottom: 24px;
+  }
+  .contact-form-cp {
+    width: 56%;
   }
 }
 /* ================================================
@@ -4444,6 +4452,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 ===== Newsletter SignUp Area Styles =====
 ====================================== */
 .newsletter-sec {
+  padding: 30px 0 20px 0;
   position: relative;
   z-index: 10;
   background-color: #566455;
@@ -4453,9 +4462,9 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border-radius: 20px;
   color: #fff !important;
-  padding: 30px 0;
 }
 .newsletter-flex .cta-arrow {
   display: block;
@@ -4464,6 +4473,10 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 .newsletter-flex .cta-arrow img {
   height: 36px;
+}
+
+.newsletter-form {
+  width: 100%;
 }
 
 .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
@@ -4534,6 +4547,15 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 760px) {
+  .newsletter-sec {
+    padding: 0;
+  }
+  .newsletter-flex {
+    flex-direction: row;
+  }
+  .newsletter-flex .innovation-content {
+    width: 60%;
+  }
   .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
     width: 100%;
   }
@@ -4553,6 +4575,12 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   }
 }
 @media all and (min-width: 992px) {
+  .newsletter-flex .innovation-content {
+    width: 100%;
+  }
+  .newsletter-form {
+    width: 70%;
+  }
   .eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root [class*=FormLayout__Container-sc] {
     min-width: 400px;
   }
@@ -4567,7 +4595,6 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
 }
 @media all and (min-width: 1200px) {
   .newsletter-flex {
-    padding: 40px 0;
     border-radius: 30px;
     width: 100%;
     justify-content: space-between;
@@ -4644,6 +4671,7 @@ html[data-scroll-orientation=horizontal] [data-scroll-container] {
   background-color: transparent;
 }
 .samplepopup .modal-body {
+  padding: 0;
   background: #f2f2f2;
   max-height: 96vh;
   overflow: scroll;

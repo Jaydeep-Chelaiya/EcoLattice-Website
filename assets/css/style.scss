@@ -3522,9 +3522,9 @@ html[data-scroll-orientation="horizontal"] {
 }
 .contact-container {
   .contact-title {
-    margin-bottom: 50px;
     p {
       line-height: 1.35;
+      margin-bottom: 0;
     }
   }
 }
@@ -3574,6 +3574,9 @@ html[data-scroll-orientation="horizontal"] {
     margin-top: 20px;
   }
 }
+.contact-form-cp {
+  width: 100%;
+}
 @include mediaQuery(min, 760px) {
   .contact-container {
     @include flex(flex-start, space-between);
@@ -3581,6 +3584,9 @@ html[data-scroll-orientation="horizontal"] {
       margin-bottom: 0;
       width: 50%;
     }
+  }
+  .contact-form-cp {
+    width: 60%;
   }
   .contact-form {
     width: 46%;
@@ -3669,6 +3675,9 @@ html[data-scroll-orientation="horizontal"] {
     .single-form-item {
       margin-bottom: 24px;
     }
+  }
+  .contact-form-cp {
+    width: 56%;
   }
 }
 
@@ -4691,15 +4700,16 @@ html[data-scroll-orientation="horizontal"] {
 ===== Newsletter SignUp Area Styles =====
 ====================================== */
 .newsletter-sec {
+  padding: $spacing-lg 0 $spacing-md 0;
   position: relative;
   z-index: 10;
   background-color: #566455;
 }
 .newsletter-flex {
   @include flex(center, center);
+  flex-direction: column;
   border-radius: $border-radius;
   color: #fff !important;
-  padding: $spacing-lg 0;
   .cta-arrow {
     display: block;
     min-width: 36px;
@@ -4709,6 +4719,10 @@ html[data-scroll-orientation="horizontal"] {
     }
   }
 }
+.newsletter-form {
+  width: 100%;
+}
+
 .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
   width: 100%;
 }
@@ -4779,6 +4793,15 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 @include mediaQuery(min, 760px) {
+  .newsletter-sec {
+    padding: 0;
+  }
+  .newsletter-flex {
+    flex-direction: row;
+    .innovation-content {
+      width: 60%;
+    }
+  }
   .elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 {
     width: 100%;
   }
@@ -4797,6 +4820,14 @@ html[data-scroll-orientation="horizontal"] {
   }
 }
 @include mediaQuery(min, 992px) {
+  .newsletter-flex {
+    .innovation-content {
+      width: 100%;
+    }
+  }
+  .newsletter-form {
+    width: 70%;
+  }
   .eapps-form-builder-bd28a378-3c36-4c16-b690-75b3f75d7ee0-custom-css-root {
     [class*="FormLayout__Container-sc"] {
       min-width: 400px;
@@ -4813,7 +4844,6 @@ html[data-scroll-orientation="horizontal"] {
 }
 @include mediaQuery(min, 1200px) {
   .newsletter-flex {
-    padding: 40px 0;
     border-radius: $border-radius-lg;
     width: 100%;
     justify-content: space-between;
@@ -4891,6 +4921,7 @@ html[data-scroll-orientation="horizontal"] {
     background-color: transparent;
   }
   .modal-body {
+    padding: 0;
     background: #f2f2f2;
     max-height: 96vh;
     overflow: scroll;

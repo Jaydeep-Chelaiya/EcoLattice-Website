@@ -514,9 +514,12 @@
     <section class="newsletter-sec">
       <div class="container">
         <div class="newsletter-flex">
-          <!-- Elfsight Form Builder | Newsletter SignUp -->
-          <script src="https://static.elfsight.com/platform/platform.js" async></script>
-          <div class="elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0" data-elfsight-app-lazy></div>
+          <div class="innovation-content position-relative p-0" style="transform: none">
+            <span class="mb-3 mb-md-0">Subscribe to Know More</span>
+          </div>
+          <!-- Hubspot Form | Newsletter SignUp -->
+          <script src="https://js-na2.hsforms.net/forms/embed/246091415.js" defer></script>
+          <div class="hs-form-frame newsletter-form" data-region="na2" data-form-id="cfdb4fcd-0604-4f7a-ada7-76c83567c45a" data-portal-id="246091415"></div>
         </div>
       </div>
     </section>
@@ -626,12 +629,10 @@
         <div class="modal-content">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="popup-close"><img src="assets/img/close-arrow.svg" alt="Close Icon" /></button>
           <div class="modal-body">
-            <!-- Elfsight Form Builder | Request a Sample -->
-            <script src="https://elfsightcdn.com/platform.js" async></script>
-            <div class="elfsight-app-9be136c0-0de6-4298-83b6-1329e60de016" data-elfsight-app-lazy></div>
-            <!-- Elfsight Form Builder | Newsletter SignUp -->
-            <script src="https://static.elfsight.com/platform/platform.js" async></script>
-            <div class="elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0 newsletter-popup" data-elfsight-app-lazy></div>
+            <!-- Hubspot Form | Request a Sample -->
+            <script src="https://js-na2.hsforms.net/forms/embed/246091415.js" defer></script>
+            <div class="hs-form-frame" data-region="na2" data-form-id="1673c748-99f2-46ce-8a17-94bb5b645907" data-portal-id="246091415"></div>
+            <!-- Hubspot Form | Request a Sample -->
           </div>
         </div>
       </div>
@@ -731,42 +732,31 @@
       document.addEventListener("DOMContentLoaded", function () {
         const modalEl = document.getElementById("samplePopup");
         const popupModal = new bootstrap.Modal(modalEl);
+
         const MAX_SHOWS = 2;
         const SHOW_DELAY = 3000;
         const RESHOW_DELAY = 15000;
+
         let showCount = Number(sessionStorage.getItem("popupShowCount") || 0);
         let disabled = sessionStorage.getItem("popupDisabled") === "true";
-        // Form containers
-        const form1 = modalEl.querySelector(".elfsight-app-9be136c0-0de6-4298-83b6-1329e60de016");
-        const form2 = modalEl.querySelector(".elfsight-app-bd28a378-3c36-4c16-b690-75b3f75d7ee0");
-        function toggleForms() {
-          // First popup → show first form
-          if (showCount === 0) {
-            form1.style.display = "block";
-            form2.style.display = "none";
-          }
-          // Second popup → show second form
-          else if (showCount === 1) {
-            form1.style.display = "none";
-            form2.style.display = "block";
-          }
-        }
+
         function showPopup() {
-          if (disabled) return;
-          if (showCount >= MAX_SHOWS) return;
-          toggleForms();
+          if (disabled || showCount >= MAX_SHOWS) return;
+
           popupModal.show();
+
           showCount++;
           sessionStorage.setItem("popupShowCount", showCount);
         }
-        // First popup after delay
+
+        // First popup after page load
         if (!disabled && showCount < MAX_SHOWS) {
           setTimeout(showPopup, SHOW_DELAY);
         }
-        // Re-show popup after close
+
+        // Show again after closing (only once more)
         modalEl.addEventListener("hidden.bs.modal", function () {
-          if (disabled) return;
-          if (showCount >= MAX_SHOWS) return;
+          if (disabled || showCount >= MAX_SHOWS) return;
           setTimeout(showPopup, RESHOW_DELAY);
         });
       });
